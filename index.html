@@ -5,15 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        .game {
+            display: grid;
+            grid-template-columns : repeat(5, 50px);
+            grid-template-rows: repeat(5, 50px);
+        }
         div {
-            height: 60px;
-            width: 60px;
+            border: 1px solid black;
+            background-image: url(./img/grass.png);
+            height: 50px;
+            width: 50px;
         }
     </style>
 </head>
-<body>
-    <div style="background-image: url('Skjermbilde 2023-10-02 123922.png');">
-        <img style="width: 50px;" src="GET ferie.png">
-    </div>
+<body onload="updateView()">
+    <div id="game" class="game"></div>
+            
+    <script>
+        // Test
+        function updateView(){
+            document.getElementById("game").innerHTML = `${drawBoard(5)}`
+        }
+
+        function drawBoard(size){
+            boardHTML = ""
+            randomIndex = Math.floor(Math.random()*size*size+1)
+            for(let i = 0; i<size*size;i++){
+                if(i == randomIndex) boardHTML += `<div><img style="width:50px;" src="./img/getrookie.png"></div>`
+                else boardHTML += `<div> </div>`
+            }
+            return boardHTML;
+        }
+    </script>
 </body>
 </html>

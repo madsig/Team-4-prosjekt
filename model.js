@@ -51,6 +51,7 @@ let model = {
                     someItem1DropOffPoint: null,
                 },
                 optimalPath: [], //Vi setter denne selv.
+                //
                 walkablePath: [] //Indexene man kan gå på. Om man er utenfor disse, så blir program.
                 
             },
