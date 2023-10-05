@@ -7,14 +7,17 @@
     <style>
         .game {
             display: grid;
-            grid-template-columns : repeat(5, 50px);
-            grid-template-rows: repeat(5, 50px);
+            grid-template-columns : repeat(5, 64px);
+            grid-template-rows: repeat(5, 64px);
         }
-        div {
-            border: 1px solid black;
+        .game > div {
+           
             background-image: url(./img/grass.png);
-            height: 50px;
-            width: 50px;
+            
+        }
+        div > img{
+            height: 80px;
+            width: 80px;
         }
     </style>
 </head>
@@ -31,7 +34,7 @@
             boardHTML = ""
             randomIndex = Math.floor(Math.random()*size*size+1)
             for(let i = 0; i<size*size;i++){
-                if(i == randomIndex) boardHTML += `<div><img style="width:50px;" src="./img/getrookie.png"></div>`
+                if(i == randomIndex) boardHTML += `<div><img style="width:64px; height:64px" src="./img/getrookie.png"></div>`
                 else boardHTML += `<div> </div>`
             }
             return boardHTML;
