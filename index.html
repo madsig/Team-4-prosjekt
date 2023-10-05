@@ -7,8 +7,8 @@
     <style>
         .game {
             display: grid;
-            grid-template-columns : repeat(6, 64px);
-            grid-template-rows: repeat(6, 64px);
+            grid-template-columns : repeat(7, 64px);
+            grid-template-rows: repeat(7, 64px);
         }
         .game > div {
            
@@ -27,7 +27,7 @@
     <script>
         // Test
         function updateView(){
-            document.getElementById("game").innerHTML = `${drawBoard(6)}`
+            document.getElementById("game").innerHTML = `${drawBoard(7)}`
         }
 
         function drawBoard(size){
