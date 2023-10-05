@@ -7,8 +7,8 @@
     <style>
         .game {
             display: grid;
-            grid-template-columns : repeat(5, 64px);
-            grid-template-rows: repeat(5, 64px);
+            grid-template-columns : repeat(6, 64px);
+            grid-template-rows: repeat(6, 64px);
         }
         .game > div {
            
@@ -16,8 +16,8 @@
             
         }
         div > img{
-            height: 80px;
-            width: 80px;
+            height: 64x;
+            width: 64px;
         }
     </style>
 </head>
@@ -27,7 +27,7 @@
     <script>
         // Test
         function updateView(){
-            document.getElementById("game").innerHTML = `${drawBoard(5)}`
+            document.getElementById("game").innerHTML = `${drawBoard(6)}`
         }
 
         function drawBoard(size){
