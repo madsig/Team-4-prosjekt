@@ -4,11 +4,20 @@
 4. Det skal være mulig legge igjen info (navn, epost)
 
 
-- Kommandoene ligger i knapper, når man trykker på knappen flyttes kommandoen bort i en "Program" liste. Om brukeren ombestemmer seg kan hen 
-trykke på knappen i programlisten, så legges den tilbake. Man har 1 knapp per kommando. Om man feks må bruke samme kommando 2 ganger, ligger det
-2 like knapper i listen.
+Rules an
+1. Kommandoene ligger i knapper, når man trykker på knappen flyttes kommandoen bort i en "Program" liste. Om brukeren ombestemmer seg kan hen trykke på knappen i programlisten, så legges den tilbake. Man har 1 knapp per kommando. Om man feks må bruke samme kommando 2 ganger, ligger det 2 like knapper i listen.
 
-- Spillet må vise brukeren hva de forskjellige kommandoene gjør. "Tooltip?".
+2. Kommando-div'ene -  Når programmet har kjørt kommandoen i listen, blir den grønn(riktig) eller rød(feil) og psuedokode vises i knappen istedenfor (fra "Gå fram 1 steg" til "MoveForward(1))
 
-- Spillet må ha en "Løsning"-funksjon, hvor man viser riktig løsning.
+3. Reset/Run - Når programmet kjører endres Reset/Run knappene til "Running Code...". Denne endres avhengig av utfallet.
+Riktig - "Correct! Continue onwards!", 
+Feil - "So close.. Try again!"
+Dette kan være lister over forskjellige fraser som velges tilfeldig.
 
+4. Ett item kan kun brukes ett sted
+
+5. Plukke opp instrument, Lyd/musikk.
+
+6. Gå fram X steg, Snu X. Disse knappene har
+
+7. Målet er å plukke opp kommandoer (kode) og bruke dette for å fjerne hindringer. I mål plukker spilleren opp kommandoe (feks. Snu) som brukes videre i spillet.
