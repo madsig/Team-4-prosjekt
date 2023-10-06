@@ -12,13 +12,10 @@
         }
         .game > div {
            
-            background-image: url(./img/grass.png);
-            
+            /* background-image: url(./img/grass.png); */
+            border: 1px solid lightgray;
         }
-        div > img{
-            height: 64x;
-            width: 64px;
-        }
+        
     </style>
 </head>
 <body onload="updateView()">
@@ -33,9 +30,19 @@
         function drawBoard(size){
             boardHTML = ""
             randomIndex = Math.floor(Math.random()*size*size+1)
+            player = `<div><img style="width:64px; height:64px" src="./img/rookie.png"></div>`
+            straightVertical = `<div><img src="./img/straight_line.png"></div>`
             for(let i = 0; i<size*size;i++){
-                if(i == randomIndex) boardHTML += `<div><img style="width:64px; height:64px" src="./img/rookie.png"></div>`
-                else boardHTML += `<div> </div>`
+                if(i == 31){
+                    boardHTML += `<div style="background-image: url(./img/grass.png);"><img style="width:64px; height:64px" src="./img/rookie.png"></div>`
+
+                }else if(i == 24){
+                    if(i == 31){
+                    boardHTML += `<div style="background-image: url(./img/tiles/straight_line.png);"></div>`
+                } 
+                }
+
+                else boardHTML += `<div style="background-image: url(./img/grass.png);">${i}</div>`
             }
             return boardHTML;
         }
