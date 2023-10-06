@@ -4,13 +4,25 @@
 4. Det skal være mulig legge igjen info (navn, epost)
 
 
+Todo:
+- Vi dropper dør-funksjonalitet
+- "Start spill" siden må kunne gjentas på flere levels, for å fortelle historie
+
+- Hvordan få inn "Snu" i availableCommands for hvert level. Snu kan være både høyre og venstre.
+
+
+"Kjekt å ha":
+- Kanskje en kort quiz? type, Kahoot, med 1 spørsmål?
+- Story dekker spillbrettet, program og commands(om det blir for lite med spillbrettet)
+
+
 Rules an
 1. Kommandoene ligger i knapper, når man trykker på knappen flyttes kommandoen bort i en "Program" liste. Om brukeren ombestemmer seg kan hen trykke på knappen i programlisten, så legges den tilbake. Man har 1 knapp per kommando. Om man feks må bruke samme kommando 2 ganger, ligger det 2 like knapper i listen.
 
 2. Kommando-div'ene -  Når programmet har kjørt kommandoen i listen, blir den grønn(riktig) eller rød(feil) og psuedokode vises i knappen istedenfor (fra "Gå fram 1 steg" til "MoveForward(1))
 
 3. Reset/Run - Når programmet kjører endres Reset/Run knappene til "Running Code...". Denne endres avhengig av utfallet.
-Riktig - "Correct! Continue onwards!", 
+Riktig - "Correct! Continue onwards!",
 Feil - "So close.. Try again!"
 Dette kan være lister over forskjellige fraser som velges tilfeldig.
 
@@ -21,3 +33,13 @@ Dette kan være lister over forskjellige fraser som velges tilfeldig.
 6. Gå fram X steg, Snu X. Disse knappene har
 
 7. Målet er å plukke opp kommandoer (kode) og bruke dette for å fjerne hindringer. I mål plukker spilleren opp kommandoe (feks. Snu) som brukes videre i spillet.
+
+Story Levels:
+Level 1 "Fremover"
+    Rookie går rundt i ørkenen i Larvik.
+Level 2 "Snu"
+    Rookie går forbi logikk og kode han ikke forstår hvordan han skal bruke.
+Level 3 "Bruk"
+    Get Wizard dukker opp, Rookie får i oppdrag om å plukke opp en loop. Siden kræsjer.
+Level 4 "Bruk"
+    Etter siden har kræsjet, må Rookie komme seg til Academy.
