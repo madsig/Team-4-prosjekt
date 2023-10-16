@@ -13,15 +13,22 @@
         }
 
         .game>div {
-
-             background-image: url(./img/grass.png);
-            border: 1px solid lightgray;
+            background-image:  url("grass.png");
+             /* border: 1px solid rgb(37, 148, 37); */
         }
     </style>
 </head>
 
 <body onload="updateView()">
     <div id="game" class="game"></div>
+    <ul>
+        <li>HorizontalPath</li>
+        <li>VerticalPath</li>
+        <li>RightTurnTop</li>
+        <li>LeftTurnTop</li>
+        <li>RightTurnBottom</li>
+        <li>LeftTurnBottom</li>
+    </ul>
 
     <script>
         // Test
@@ -31,21 +38,51 @@
 
         function drawBoard(size) {
             boardHTML = ""
-            let boardLength = size * size + 1
-            randomIndex = Math.floor(Math.random() * boardLength)
+
+            let boardLength = size * size
             player = `<div><img style="width:64px; height:64px" src="./img/rookie.png"></div>`
             straightVertical = `<div><img src="./img/straight_line.png"></div>`
             for (let i = 0; i < boardLength; i++) {
-                if (i == randomIndex) {
-                    boardHTML += `<div style="background-image: url(./img/grass.png);"><img style="width:64px; height:64px" src="./img/rookie.png"></div>`
-
-                } else if (i == 24) {
-                    if (i == 31) {
-                        boardHTML += `<div style="background-image: url(./img/tiles/straight_line.png);"></div>`
-                    }
+                if (i == 10) {
+                    boardHTML += `<div style="background-image: url(./img/tiles/grass.png);"><img src="./img/rookie.png"></div>`
+                }else if (i == 11) {
+                    boardHTML += `<div style="background-image: url(./img/tiles/grass.png);"><img src="./img/tiles/locked_gate.png"></div>`
                 }
 
-                else boardHTML += `<div style="background-image: url(./img/grass.png);">${i}</div>`
+                //Man kan bruke denne til å legge til flere "items", kun i img taggen sånn at gresset vises som background.
+                // else if (i == 12) {
+                //     boardHTML += `<div style="background-image: url(./img/tiles/grass.png);"><img src="./img/tiles/locked_gate.png"></div>`
+                // }
+
+
+                
+                else if (i == 31) {
+                    boardHTML += `<div style="background-image: url(./img/tiles/vertical_path.png);">${i}</div>`
+                }else if (i == 38) {
+                    boardHTML += `<div style="background-image: url(./img/tiles/south_end.png);">${i}</div>`
+                }else if (i == 24) {
+                    boardHTML += `<div style="background-image: url(./img/tiles/turn_1.png);">${i}</div>`
+                }else if (i == 25) {
+                    boardHTML += `<div style="background-image: url(./img/tiles/horizontal_path.png);">${i}</div>`
+                }else if (i == 26) {
+                    boardHTML += `<div style="background-image: url(./img/tiles/turn_2.png);">${i}</div>`
+                }else if (i == 33) {
+                    boardHTML += `<div style="background-image: url(./img/tiles/vertical_path.png);">${i}</div>`
+                }else if (i == 40) {
+                    boardHTML += `<div style="background-image: url(./img/tiles/turn_3.png);">${i}</div>`
+                }else if (i == 39) {
+                    boardHTML += `<div style="background-image: url(./img/tiles/turn_4.png);">${i}</div>`
+                }else if (i == 32) {
+                    boardHTML += `<div style="background-image: url(./img/tiles/north_end.png);">${i}</div>`
+                }else if (i == 22) {
+                    boardHTML += `<div style="background-image: url(./img/tiles/left_end.png);">${i}</div>`
+                }else if (i == 23) {
+                    boardHTML += `<div style="background-image: url(./img/tiles/right_end.png);">${i}</div>`
+                }
+
+                
+
+                else boardHTML += `<div style="background-image: url(./img/tiles/grass.png);">${i}</div>`
             }
             return boardHTML;
         }
