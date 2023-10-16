@@ -21,14 +21,7 @@
 
 <body onload="updateView()">
     <div id="game" class="game"></div>
-    <ul>
-        <li>HorizontalPath</li>
-        <li>VerticalPath</li>
-        <li>RightTurnTop</li>
-        <li>LeftTurnTop</li>
-        <li>RightTurnBottom</li>
-        <li>LeftTurnBottom</li>
-    </ul>
+    
 
     <script>
         // Test
@@ -38,14 +31,11 @@
 
         function drawBoard(size) {
             boardHTML = ""
-
             let boardLength = size * size
-            player = `<div><img style="width:64px; height:64px" src="./img/rookie.png"></div>`
-            straightVertical = `<div><img src="./img/straight_line.png"></div>`
             for (let i = 0; i < boardLength; i++) {
-                if (i == 10) {
+                if (i == 8) {
                     boardHTML += `<div style="background-image: url(./img/tiles/grass.png);"><img src="./img/rookie.png"></div>`
-                }else if (i == 11) {
+                }else if (i == 9) {
                     boardHTML += `<div style="background-image: url(./img/tiles/grass.png);"><img src="./img/tiles/locked_gate.png"></div>`
                 }
 
