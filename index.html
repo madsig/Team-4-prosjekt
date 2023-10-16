@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,39 +8,41 @@
     <style>
         .game {
             display: grid;
-            grid-template-columns : repeat(7, 64px);
+            grid-template-columns: repeat(7, 64px);
             grid-template-rows: repeat(7, 64px);
         }
-        .game > div {
-           
-            /* background-image: url(./img/grass.png); */
+
+        .game>div {
+
+             background-image: url(./img/grass.png);
             border: 1px solid lightgray;
         }
-        
     </style>
 </head>
+
 <body onload="updateView()">
     <div id="game" class="game"></div>
-            
+
     <script>
         // Test
-        function updateView(){
+        function updateView() {
             document.getElementById("game").innerHTML = `${drawBoard(7)}`
         }
 
-        function drawBoard(size){
+        function drawBoard(size) {
             boardHTML = ""
-            randomIndex = Math.floor(Math.random()*size*size+1)
+            let boardLength = size * size + 1
+            randomIndex = Math.floor(Math.random() * boardLength)
             player = `<div><img style="width:64px; height:64px" src="./img/rookie.png"></div>`
             straightVertical = `<div><img src="./img/straight_line.png"></div>`
-            for(let i = 0; i<size*size;i++){
-                if(i == 31){
+            for (let i = 0; i < boardLength; i++) {
+                if (i == randomIndex) {
                     boardHTML += `<div style="background-image: url(./img/grass.png);"><img style="width:64px; height:64px" src="./img/rookie.png"></div>`
 
-                }else if(i == 24){
-                    if(i == 31){
-                    boardHTML += `<div style="background-image: url(./img/tiles/straight_line.png);"></div>`
-                } 
+                } else if (i == 24) {
+                    if (i == 31) {
+                        boardHTML += `<div style="background-image: url(./img/tiles/straight_line.png);"></div>`
+                    }
                 }
 
                 else boardHTML += `<div style="background-image: url(./img/grass.png);">${i}</div>`
@@ -48,4 +51,5 @@
         }
     </script>
 </body>
+
 </html>
