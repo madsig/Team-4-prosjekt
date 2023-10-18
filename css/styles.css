@@ -45,9 +45,27 @@ p{
     border: solid black 1px;
     height: 64px;
     width: 64px;
+
+    position: relative;
+    text-align: center;
+
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+.gridNumber {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.gridImage {
+    display: block;
+    margin: 0 auto;
+
 }
 
 .programWindow {
+    min-height: 80px;
     display: flex;
     flex-direction: column;
     grid-area: 'program';
@@ -56,6 +74,7 @@ p{
     justify-content: top;
     align-items: center;
 }
+
 
 .commandsWindow {
     display: flex;
@@ -75,14 +94,14 @@ p{
 
 .codeButtonDefault {
     width: 98%;
-    height: 35px;
+    height: 40px;
     background-color: #FFBD59;
     border-color: #fcb953;
     border-radius: 5%;
 }
 .codeButtonEmpty{
     width: 98%;
-    height: 35px;
+    height: 40px;
     background-color: #F8EAC5;
     border-color: #fcb953;
     border-radius: 5%;
@@ -90,6 +109,57 @@ p{
 }
 
 .levelButton {
+    font-family: 'Lato', sans-serif;
+    font-size: large;
+    height: 64px;
+    width: 64px;
     background-color: orangered;
     color: white;
 }
+
+.levelButtonDisabled {
+    font-family: 'Lato', sans-serif;
+    font-size: large;
+    height: 64px;
+    width: 64px;
+    background-color: rgb(255, 144, 103);
+    color: white;
+}
+
+
+.programControlButtons{
+    all:unset;
+    position: relative;
+    bottom: -30px;
+    
+    height: 50px;
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    
+
+}
+
+.resetButton{
+    font-family: 'Lato', sans-serif;
+    font-size: large;
+    height: 50px;
+    width: 128px;
+    font-weight: 800;
+    background-color: rgb(255, 83, 31);
+    border-radius: 10%;
+    color: white;
+}
+
+.runProgramButton{
+    font-family: 'Lato', sans-serif;
+    font-size: large;
+    font-weight: 800;
+    height: 50px;
+    width: 128px;
+    background-color: rgb(52, 164, 39);
+    border-radius: 10%;
+    color: white;
+}
+
