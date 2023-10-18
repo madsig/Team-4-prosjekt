@@ -46,10 +46,6 @@ p{
     height: 64px;
     width: 64px;
 }
-/* .gameGrid>div {
-    background-image:  url("../img/tiles/grass.png");
-    border: 1px solid rgb(37, 148, 37);
-}  */
 
 .programWindow {
     display: flex;
