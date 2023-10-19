@@ -2,6 +2,7 @@ let model = {
     app: {
         //kasnkje i css fil
         theme: 'light',
+        gameTitle: "GET IT-spillet(wip)",
         
         //Trenger man dette i modellen?
         colorPallete:{
@@ -70,7 +71,7 @@ let model = {
                 characterStartIndex: 16,
                 finishIndex: 32,
                 inventory: [],
-                paths: [16,23,30,31,32],
+                paths: [16,23,30,31,32,],
             },
             {
                 id: 2,
@@ -84,21 +85,32 @@ let model = {
             },
             {
                 id: 3,
-                characterStartIndex: 42,
+                characterStartIndex: 0,
                 finishIndex: 48,
                 inventory: [
                     { id: 0, name: 'kake', indexInBoard: 16, iconUrl: 'dfhdhg.png', pickedUp: false, },
                     { id: 1, name: 'kake', indexInBoard: 23, iconUrl: 'hliah.png', pickedUp: false, }
                 ],
-                paths: [31, 23, 16, 17, 18, 19, 26, 32, 2, 5],
+                //test
+                paths: [0,1,8,7,14,15,22,21,28,29,36,35,42,43,44,37,30,23,16,9,2,3,10,17,24,25,18,11,4,5,6,13,12,19,20,27,26,33,34,41,40,39,32,31,38,45,46,47,48],
             },
         ],
 
         backgroundImages: ["img/tiles/grass.png"],
-        pathwayImages: ["img/tiles/horizontal_path.png", "img/tiles/vertical_path.png", "img/tiles/turn_1.png", "img/tiles/turn_2.png", "img/tiles/turn_3.png", "img/tiles/turn_4.png",], //objekt eller bare vite riktig index
-        pathwayImages2: {
+        //pathwayImages: ["img/tiles/horizontal_path.png", "img/tiles/vertical_path.png", "img/tiles/turn_1.png", "img/tiles/turn_2.png", "img/tiles/turn_3.png", "img/tiles/turn_4.png",], //objekt eller bare vite riktig index
+        pathwayImages: {
             'vertical': "img/tiles/horizontal_path.png",
             'horizontal': "img/tiles/vertical_path.png",
+
+            'turnSE': "img/tiles/turn_1.png",
+            'turnSW': "img/tiles/turn_2.png",
+            'turnNW': "img/tiles/turn_3.png",
+            'turnNE': "img/tiles/turn_4.png",
+
+            'endN': "img/tiles/north_end.png",
+            'endS': "img/tiles/south_end.png",
+            'endE': "img/tiles/right_end.png",
+            'endW': "img/tiles/left_end.png",
         },
         playerImage: "img/rookiefront1.png", //burde være array eller objekt for å få rettning
         flagImage: "img/flag.png",
