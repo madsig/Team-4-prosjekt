@@ -16,7 +16,7 @@ let model = {
 
     game: {
         runtime: {
-            currentLevel: 1,
+            currentLevel: 2,
             robot: {
                 index: 0,
                 direction: 'north',
@@ -80,7 +80,7 @@ let model = {
                     { id: 0, name: 'kake', indexInBoard: 16, iconUrl: 'dfhdhg.png', pickedUp: false, },
                     { id: 1, name: 'kake', indexInBoard: 23, iconUrl: 'hliah.png', pickedUp: false, }
                 ],
-                paths: [39,40,33,26,19,18,11,10,9,16,15,22,29,36,37],
+                paths: [37,36,29,22,15,16,9,10,11,18,19,26,33,40,39],//[39,40,33,26,19,18,11,10,9,16,15,22,29,36,37],
             },
             {
                 id: 3,
@@ -95,7 +95,11 @@ let model = {
         ],
 
         backgroundImages: ["img/tiles/grass.png"],
-        pathwayImages: ["img/tiles/horizontal_path.png", "img/tiles/vertical_path.png"], //objekt eller bare vite riktig index
+        pathwayImages: ["img/tiles/horizontal_path.png", "img/tiles/vertical_path.png", "img/tiles/turn_1.png", "img/tiles/turn_2.png", "img/tiles/turn_3.png", "img/tiles/turn_4.png",], //objekt eller bare vite riktig index
+        pathwayImages2: {
+            'vertical': "img/tiles/horizontal_path.png",
+            'horizontal': "img/tiles/vertical_path.png",
+        },
         playerImage: "img/rookiefront1.png", //burde være array eller objekt for å få rettning
         flagImage: "img/flag.png",
         itemImages: [
