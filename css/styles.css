@@ -1,21 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Lato:wght@300&display=swap');
 
+body{
+    background-color: #EFF0F0;
+}
 h1,h2,h3{
+    margin-bottom: 0%;
     font-family: 'Caveat', cursive;
     color: #FFBD59;
     margin-top: 0%;
     text-align: center;
     
 }
-p{
+button{
     font-family: 'Lato', sans-serif;
+    font-weight: 800;
+    font-size: large;
+}
+.levelsHeader{
+    display: flex;
+    height: 10px;
+    justify-content: left;
 }
 
 .container {
     display: grid;
     height: 100vh;
     grid-template-columns: 500px 300px 300px;
-    grid-template-rows: 500px 200px 200px;
+    grid-template-rows: 550px 200px 200px;
     grid-template-areas:
         'gameWindow program commands'
         'levels program commands'
@@ -30,6 +41,8 @@ p{
     display: flex;
     align-items: center;
     justify-content: center;
+    border: #FFBD59 solid 2px;
+    border-radius: 10px;
 }
 
 .gameGrid {
@@ -37,7 +50,7 @@ p{
     grid-template-columns: repeat(7, 64px);
     grid-template-rows: repeat(7, 64px);
     height: 448px;
-    border: solid red 1px;
+    border: solid black 1px;
     margin: auto;
 }
 .gridBlock{
@@ -65,11 +78,12 @@ p{
 }
 
 .programWindow {
-    min-height: 80px;
+    min-height: 60px;
     display: flex;
     flex-direction: column;
     grid-area: 'program';
-    border: solid black 1px;
+    border: solid rgb(251, 178, 70) 2px;
+    border-radius: 10px;
     height: 900px;
     justify-content: top;
     align-items: center;
@@ -80,7 +94,8 @@ p{
     display: flex;
     flex-direction: column;
     grid-area: 'commands';
-    border: solid black 1px;
+    border: solid rgb(251, 178, 70) 2px;
+    border-radius: 10px;
     height: 900px;
     justify-content: top;
     align-items: center;
@@ -88,78 +103,96 @@ p{
 }
 
 .levelsWindow {
+
+    height: 100px;
     grid-area: 'levels';
-    border: solid black 1px;
+    border: solid rgb(251, 178, 70) 2px;
+    border-radius: 10px;
+}
+.levelsWindow>h2{
+    margin-bottom: 5%;
 }
 
+/* The color when the codeButtons are in the commands list */
 .codeButtonDefault {
     width: 98%;
     height: 40px;
     background-color: #FFBD59;
     border-color: #fcb953;
-    border-radius: 5%;
+    border-radius: 10px;
 }
-.codeButtonEmpty{
+/* The color when the codeButtons are in the program list */
+.codeButtonProgram{
     width: 98%;
     height: 40px;
     background-color: #F8EAC5;
     border-color: #fcb953;
-    border-radius: 5%;
-    
+    border-radius: 10px;    
 }
 
+/* The changes in color if the command is correct or not. */
+.codeButtonSuccess{
+    width: 98%;
+    height: 40px;
+    background-color: #7efb86;
+    border-color: #9dfa93;
+    border-radius: 10px;
+}
+.codeButtonFailed{
+    width: 98%;
+    height: 40px;
+    background-color: #fc6d6d;
+    border-color: #f47272;
+    border-radius: 10px;
+}
+
+
+
 .levelButton {
-    font-family: 'Lato', sans-serif;
-    font-size: large;
     height: 64px;
     width: 64px;
     background-color: orangered;
+    border: #FFBD59 solid 2px;
+    border-radius: 10px;
     color: white;
 }
-
 .levelButtonDisabled {
-    font-family: 'Lato', sans-serif;
-    font-size: large;
     height: 64px;
     width: 64px;
     background-color: rgb(255, 144, 103);
+    border: #FFBD59 solid 2px;
+    border-radius: 10px;
     color: white;
 }
+
 
 
 .programControlButtons{
     all:unset;
-    position: relative;
-    bottom: -30px;
-    
-    height: 50px;
+
+    height: 60px;
     width: 300px;
     display: flex;
     justify-content: space-between;
-    align-content: center;
+    align-items: end;
+
     
 
 }
-
 .resetButton{
-    font-family: 'Lato', sans-serif;
-    font-size: large;
     height: 50px;
     width: 128px;
-    font-weight: 800;
     background-color: rgb(255, 83, 31);
-    border-radius: 10%;
+    border-color: red;
+    border-radius: 10px;
     color: white;
 }
-
 .runProgramButton{
-    font-family: 'Lato', sans-serif;
-    font-size: large;
-    font-weight: 800;
     height: 50px;
     width: 128px;
     background-color: rgb(52, 164, 39);
-    border-radius: 10%;
+    border-color: green;
+    border-radius: 10px;
     color: white;
 }
 
