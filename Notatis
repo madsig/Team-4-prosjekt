@@ -42,8 +42,10 @@ Story Levels:
 Level 1 "Fremover"
     Rookie går rundt i ørkenen i Larvik.
 Level 2 "Snu"
-    Rookie går forbi logikk og kode han ikke forstår hvordan han skal bruke.
-Level 3 "Bruk"
+    Rookie går forbi logikk og kode han ikke forstår hvordan han skal bruke.  
+Level 3 "Plukk opp" Objekt: Loop
     Get Wizard dukker opp, Rookie får i oppdrag om å plukke opp en loop. Siden kræsjer.
-Level 4 "Bruk"
+Level 4 "Bruk" Objekt: 
     Etter siden har kræsjet, må Rookie komme seg til Academy.
+    Get Wizard ber Rookie om å komme til akademiet for en prat.
+Level 5 "Plukk
