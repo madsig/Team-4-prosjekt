@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        #canvasRookie {
+            border: 1px solid black;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 256px;
+            height: 256px;
+           image-rendering: pixelated;
+        }
+        
+    .controls {
+        position: absolute;
+        z-index: 10;
+        top: 50px;
+        left: 50%;
+        transform: translate(-50%);
+    }
+    .controls, select, option {
+        font-size: 25px;
+    }
+    </style>>
+</head>
+<body>
+    <canvas id="canvasRookie"></canvas>
+    <div class="controls">
+        <label for="animations"> Choose Animation:</label>
+        <select id="animations" name="animations">
+            <option value="walkLeft">Left</option>
+            <option value="walkRight">Right</option>
+            <option value="idle">Idle</option>
+            <option value="down">down</option>
+            <option value="up">up</option>
+            <option value="pickUp">Pick Up</option>
+            
+
+        </select>
+    </div>
+    <script src="./js/character.js"></script>
+</body>
+</html>
