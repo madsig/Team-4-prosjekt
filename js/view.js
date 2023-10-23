@@ -1,36 +1,41 @@
 "use strict";
+
+
 function updateView() {
     document.getElementById('app').innerHTML = /*HTML*/ `
         <div><h1>${model.app.gameTitle}</h1><div class="gameWindow">${generateGameWindow()}</div></div>
         ${generateProgramWindow()}
         ${generateCommandsWindow()}
         ${generateLevelsWindow()}
-    `
+    `;
+    getCanvas()
 }
 
 function initializeLevel() {
     model.game.runtime.board = JSON.parse(JSON.stringify(model.game.boards[model.game.runtime.currentLevel]));
     model.game.runtime.player.direction = model.game.runtime.board.startDirection;
+    model.game.runtime.board.backgroundImagesCache = [];
+    model.game.runtime.player.index = model.game.runtime.board.characterStartIndex;
 }
 
 function generateGameWindow() {
     const game = model.game;
     const board = game.runtime.board;
     const pathArray = board.paths;
-    const playerIndex = model.game.runtime.player.index || board.characterStartIndex
+    const playerIndex = model.game.runtime.player.index;
     let gameWindowHtml = '';
     let backgroundImage;
     console.log('%c------------------------', 'color: red; font-size: 28px;');
     console.log(pathArray);
     for (let i = 0; i < 7 ** 2; i++) {
-        backgroundImage = getBackgroundImage(i);
+        backgroundImage = board.backgroundImagesCache.length === 49 ? board.backgroundImagesCache[i] : getBackgroundImage(i);
         let flag = board.finishIndex === i ? game.flagImage : '';
         //let player = game.boards[currentBoard].characterStartIndex === i ? game.playerImage : '';
-        let player = playerIndex === i ? game.playerImage : '';
+        let player = playerIndex === i ? '<canvas id="canvasRookie"></canvas>' : '';
         gameWindowHtml += /*HTML*/ `
             <div class="gridBlock" style="background-image: url(${backgroundImage})">
                 <div class="gridNumber">${model.app.isTesting ? i:""}</div>
-                <div class="gridImage"><img src="${player} ${flag} ${getItems(i)}"></div>
+                <div class="gridImage"><img src="${flag} ${getItems(i)}"> ${player}</div>
             </div>
         `;
     }
@@ -53,7 +58,7 @@ function getBackgroundImage(index) {
     const next = nextPathDiff;
     const last = lastPathDiff;
 
-    return pathIndex === -1 ? game.backgroundImages[RNG(game.backgroundImages.length)]
+    let image =  pathIndex === -1 ? game.backgroundImages[RNG(game.backgroundImages.length)]
         : diff === 8 ? pi.turnSE
         : diff === 6 ? pi.turnSW
         : diff === -8 ? pi.turnNW
@@ -64,6 +69,8 @@ function getBackgroundImage(index) {
         : next === 7 || last === 7 ? pi.endN
         : next === -7 || last === -7 ? pi.endS
         : game.backgroundImages[-1];
+    game.runtime.board.backgroundImagesCache.push(image);
+    return image;
 }
 
 function getItems(index) {
@@ -91,10 +98,10 @@ function generateProgramWindow() {
         onclick="removeCommandFromProgram(${i})"
         >${programList[i].isSuccess ? btnText.jsName : btnText.name}</button>`
     }
-    programHTML += `
+    programHTML += /*HTML*/`
         <div class="programControlButtons">
-        <button ${model.game.runtime.program.commands.length == 0 ? "disabled":""} class="resetButton" onclick="resetProgramList()">Reset</button>
-        <button ${model.game.runtime.program.commands.length == 0 ? "disabled":""} class="runProgramButton" onclick="runProgram()">Run</button>
+        <button ${model.game.runtime.program.commands.length == 0 ? "disabled":""} class="resetButton" onclick="resetProgramList()">↺</button>
+        <button ${model.game.runtime.program.commands.length == 0 ? "disabled":""} class="runProgramButton" onclick="runProgram()">⇾</button>
         </div></div></div>`
     return programHTML;
 }
@@ -116,11 +123,11 @@ function generateLevelsWindow() {
     const currentLevel = model.game.runtime.currentLevel;
     let levelHTML = /*HTML*/ `
         <div class="levelsWindow">
-            <h2 class="levelsHeader">Levels:</h2>
-            <button class="${currentLevel != 0 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(1)">Level 1</button>
-            <button class="${currentLevel != 1 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(2)">Level 2</button>
-            <button class="${currentLevel != 2 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(3)">Level 3</button>
-            <button class="${currentLevel != 3 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(4)">Level 4</button>
+            <h2 class="levelsHeader">Levels</h2>
+            <button class="${currentLevel != 0 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(1)">1</button>
+            <button class="${currentLevel != 1 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(2)">2</button>
+            <button class="${currentLevel != 2 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(3)"> 3</button>
+            <button class="${currentLevel != 3 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(4)">4</button>
         </div>
     `;
     return levelHTML;

@@ -6,6 +6,7 @@ function moveCommandToProgram(id){
         inProgram : true,
         
     });
+    resetProgramButtonStates();
     updateView();
 }
 function removeCommandFromProgram(index){
@@ -14,6 +15,7 @@ function removeCommandFromProgram(index){
         command.isSuccess = false;
     }
     resetPlayerPosition()
+    resetProgramButtonStates();
     updateView();
 }
 
@@ -29,14 +31,18 @@ function resetPlayerPosition(){
 }
 
 function runProgram(){
-    //Do something 
-
     //Go through the program list of commands
     stepThroughList()
     
 }
 
+function resetProgramButtonStates(){
+    for(let command of model.game.runtime.program.commands){
+        command.isSuccess = false;}
+    }
+
 function stepThroughList(){
+    resetProgramButtonStates()
     let stepCounter = 0;
     let i = 1;
     
@@ -46,7 +52,7 @@ function stepThroughList(){
         }
         //Placeholder: Check if the move is valid or not here
         model.game.runtime.program.commands[stepCounter].isSuccess = true;
-        moveCharacter(i)
+        //moveCharacter(i)
         i++;
         stepCounter++;
         updateView()
@@ -57,13 +63,23 @@ function moveCharacter(i){
     commandList = model.game.runtime.program.commands;
     levelInfo = model.game.boards[model.game.runtime.currentLevel];
     playerIndex = model.game.runtime.player.index;
+    characterDir = model.game.runtime.player.direction;
 
+    // Noe feil her, legger man til Gå Fram 2 ganger, hopper den 2 ruter fram.
     for(let command of commandList){
        for(let c of model.game.commands){
             if(c.id == command.commandId){
                 if(c.id == 0){ //Gå fram
-                    model.game.runtime.player.index = model.game.runtime.board.paths[i];
-                    playerState = "down"
+                    if(characterDir == 0){
+                        model.game.runtime.player.index -=7;
+                    }else if(characterDir == 1){
+                        model.game.runtime.player.index +=1;
+                    }else if(characterDir == 2){
+                        model.game.runtime.player.index +=7;
+                    }else if(characterDir == 3){
+                        model.game.runtime.player.index -=1;
+                    }
+                    
                 }else if(c.id == 1){ //Snu venstre
                     turnLeft();
                 }else if(c.id == 2){//Snu høyre
@@ -74,6 +90,7 @@ function moveCharacter(i){
                     useItem();
                 }
             }
+            console.log("index: "+model.game.runtime.player.index)
         }
     }
 }
@@ -101,6 +118,7 @@ function changeLevel(level) {
     if (confirm("Forlat levelet?")) {
         let levelId = level - 1; //level 1 = index 0
         model.game.runtime.currentLevel = levelId;
+        resetProgramList()
         initializeLevel();
         updateView();
     }

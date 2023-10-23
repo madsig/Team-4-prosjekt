@@ -2,7 +2,7 @@ let model = {
     app: {
         //kasnkje i css fil
         theme: 'light',
-        gameTitle: "GET IT-spillet(wip)",
+        gameTitle: "Rookie and the GET wizard",
         isTesting: true,
 
         //Trenger man dette i modellen?
@@ -21,10 +21,11 @@ let model = {
             currentLevel: 1,
             player: {
                 index: 0, //The index of board.paths[]
-                direction: 0,
+                direction: 0, //0 north, 1 east, 2 south, 3 west.
                 inventory: null,
             },
             board: {
+                backgroundImagesCache: [],
                 //får kopi av board på start av level
             },
 
