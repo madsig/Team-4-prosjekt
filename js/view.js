@@ -53,7 +53,7 @@ function getBackgroundImage(index) {
     const next = nextPathDiff;
     const last = lastPathDiff;
 
-    return pathIndex === -1 ? game.backgroundImages[0]
+    return pathIndex === -1 ? game.backgroundImages[RNG(game.backgroundImages.length)]
         : diff === 8 ? pi.turnSE
         : diff === 6 ? pi.turnSW
         : diff === -8 ? pi.turnNW
@@ -63,7 +63,7 @@ function getBackgroundImage(index) {
         : next === -1 || last === -1 ? pi.endE
         : next === 7 || last === 7 ? pi.endN
         : next === -7 || last === -7 ? pi.endS
-        : game.backgroundImages[0];
+        : game.backgroundImages[-1];
 }
 
 function getItems(index) {

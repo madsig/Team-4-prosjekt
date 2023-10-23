@@ -107,7 +107,7 @@ let model = {
 
         directions: ['north','east','south', 'west'],
 
-        backgroundImages: ["img/tiles/grass.png"],
+        backgroundImages: ["img/tiles/field-of-roses.png","img/tiles/grass.png", "img/tiles/grass_2.png", "img/tiles/grass_3.png", "img/tiles/grass_4.png",],
         pathwayImages: {
             'vertical': "img/tiles/horizontal_path.png",
             'horizontal': "img/tiles/vertical_path.png",

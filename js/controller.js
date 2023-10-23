@@ -63,7 +63,7 @@ function moveCharacter(i){
             if(c.id == command.commandId){
                 if(c.id == 0){ //Gå fram
                     model.game.runtime.player.index = model.game.runtime.board.paths[i];
-                    
+                    playerState = "down"
                 }else if(c.id == 1){ //Snu venstre
                     turnLeft();
                 }else if(c.id == 2){//Snu høyre
@@ -109,4 +109,9 @@ function changeLevel(level) {
 function toggleTestMode(){
     model.app.isTesting = !model.app.isTesting;
     updateView()
+}
+
+function RNG(max) {
+    let number = Math.floor(Math.random()*max);
+    return number
 }
