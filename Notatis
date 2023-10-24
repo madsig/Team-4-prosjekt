@@ -17,9 +17,11 @@ Pre-Level 1 - Overlay med Intro/story, en Hook, hva skal spilleren gjøre.
 
 Bevegelse, snu, flytte spiller.
 Plukke opp ting og legge til inventory. 
+Forsøke å justere margin (top=ned, left=høyre, etc) for hver rute, ved å bruke setinterval() med tid 0.02s
+
 
 Bilder til Pickups, Mål, Terminaler etc..
-Bilde til 
+Bilde hvor Items skal ligge (64x64)
 
 
 

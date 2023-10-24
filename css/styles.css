@@ -36,7 +36,7 @@ button:disabled{
 
     height: 80vh;
     grid-template-columns: 458px 300px 300px;
-    grid-template-rows: 500px 200px 200px;
+    grid-template-rows: 468px 200px 200px;
     grid-template-areas:
         'gameWindow program commands'
         'levels program commands'
@@ -45,13 +45,13 @@ button:disabled{
     /* justify-content: space-evenly; */
 }
 
+/*#region Game Grid */
 .gameWindow {
     grid-area: 'gameWindow';
     height: 448px;
     display: flex;
     
 }
-
 .gameGrid {
     display: grid;
     grid-template-columns: repeat(7, 64px);
@@ -63,7 +63,7 @@ button:disabled{
 }
 .gridBlock{
     color: rgb(226, 213, 213);
-    border: solid black 1px;
+    /* border: solid black 1px; */
     height: 64px;
     width: 64px;
 
@@ -84,23 +84,23 @@ button:disabled{
     margin: 0 auto;
 
 }
+/* #endregion  */
 
 .programWindow {
     margin-left: 2%;
     margin-right: 4%;
-    min-height: 60px;
+    /* min-height: 60px; */
     display: flex;
     flex-direction: column;
     grid-area: 'program';
     /* border: solid rgb(251, 178, 70) 2px; */
     /* border-radius: 10px; */
-    height: 900px;
+    height: 448px;
     justify-content: top;
     align-items: center;
     
     background-color: #ffffff; 
 }
-
 
 .commandsWindow {
     display: flex;
@@ -108,11 +108,13 @@ button:disabled{
     grid-area: 'commands';
     /* border: solid black 2px; */
     /* border-radius: 10px; */
-    height: 80px;
-    justify-content: center;
+    height: 448px;
+    justify-content: top;
     align-items: center;
     background-color: #ffffff; 
 }
+
+/*#region LevelsWindow */
 
 .levelsHeader{
     margin-top: 5%;
@@ -155,9 +157,9 @@ button:disabled{
     text-align: center;
 }
 
+/* #endregion */
 
-
-/* The color when the codeButtons are in the commands list */
+/* #region codeButtons */
 .codeButtonDefault {
     width: 60%;
     height: 40px;
@@ -200,9 +202,9 @@ button:disabled{
     /* border-color: #f47272; */
     /* border-radius: 10px; */
 }
+/* #endregion */
 
-
-
+/*#region program reset/run */
 
 
 .programControlButtons{
@@ -231,7 +233,7 @@ button:disabled{
 .runProgramButton{
     height: 50px;
     width: 60px;
-    background-color: rgb(52, 164, 39);
+    background-color: #21EACC;
     border: none;
     /* border-color: green; */
     /* border-radius: 10px; */
@@ -240,6 +242,8 @@ button:disabled{
     text-align: center;
     padding-bottom: 2%;
 }
+
+/*#endregion */
 
 
 #canvasRookie {
@@ -250,7 +254,22 @@ button:disabled{
     transform: translate(-50%, -50%);
     width: 64px;
     height: 64px;
-   image-rendering: pixelated;
+    image-rendering: pixelated;
 
-   z-index: 2;
+    z-index: 2;
+    overflow: visible;
+    /* transition: opacity 1s ease-in-out; */
+    /* animation: MoveCharacter 1.5s ease-in; */
 }
+
+@keyframes MoveCharacter{
+    
+    0%{
+        transform: translate(-32px, -32px);
+    }
+    100%{
+        transform: translate(-32px, 32px);
+    }
+}
+
+

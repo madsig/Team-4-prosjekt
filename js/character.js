@@ -13,7 +13,7 @@ function getCanvas() {
     playerImage.src = './img/allRookie.png';
     const spriteWidth = 64;
     const spriteHeight = 64;
-    let playerState = 'idle';
+    let playerState = 'walkRight';
     // const dropDown = document.getElementById('animations'); 
     //  model.game.commands.addEventListener('change', function (e) { // knyttes til commands
     //  //   playerState = e.target.value; //Vi endrer denne for å endre animasjon. 
@@ -36,11 +36,11 @@ function getCanvas() {
             frames: 7,
         },
         {
-            name: 'down',
+            name: 'walkDown',
             frames: 7,
         },
         {
-            name: 'up',
+            name: 'walkUp',
             frames: 7,
         },
         {

@@ -14,8 +14,8 @@ function updateView() {
 function initializeLevel() {
     model.game.runtime.board = JSON.parse(JSON.stringify(model.game.boards[model.game.runtime.currentLevel]));
     model.game.runtime.player.direction = model.game.runtime.board.startDirection;
-    model.game.runtime.board.backgroundImagesCache = [];
     model.game.runtime.player.index = model.game.runtime.board.characterStartIndex;
+    model.game.runtime.board.backgroundImagesCache = [];
 }
 
 function generateGameWindow() {
@@ -88,7 +88,7 @@ function getItems(index) {
 
 function generateProgramWindow() {
     let programList = [...model.game.runtime.program.commands];
-    let programHTML = `<div><h1>Program</h1><div class="programWindow" style="height:${(programList.length * 44) + 60}px;">`
+    let programHTML = `<div><h1>Program</h1><div class="programWindow" }px;">`
     let btnText = "";
     for (let i = 0; i < programList.length; i++) {
         btnText = model.game.commands[programList[i].commandId]
@@ -109,7 +109,7 @@ function generateProgramWindow() {
 
 function generateCommandsWindow() {
     let commandList = [...model.game.levels[model.game.runtime.currentLevel].availableCommands];
-    let commandsHTML = `<div><h1>Commands</h1><div class="commandsWindow" style="height:${(commandList.length * 44)+10}px;">`
+    let commandsHTML = `<div><h1>Commands</h1><div class="commandsWindow" ">`
 
     for (let i = 0; i < commandList.length; i++) {
         commandsHTML += `<button id="${commandList[i]}" class="codeButtonDefault" onclick="moveCommandToProgram(${commandList[i]})">${model.game.commands[i].name}</button>`

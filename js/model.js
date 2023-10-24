@@ -21,7 +21,7 @@ let model = {
             currentLevel: 1,
             player: {
                 index: 0, //The index of board.paths[]
-                direction: 0, //0 north, 1 east, 2 south, 3 west.
+                direction: 1, //0 north, 1 east, 2 south, 3 west.
                 inventory: null,
             },
             board: {
