@@ -7,16 +7,27 @@
 
 
 Todo:
-- Vi dropper dør-funksjonalitet
-- "Start spill" siden må kunne gjentas på flere levels, for å fortelle historie
+Overlay:
+Story, hvorfor skal spilleren gjøre det den skal gjøre: Skal komme seg til GET academy for 
+Pre-Level 1 - Overlay med Intro/story, en Hook, hva skal spilleren gjøre. 
+1 > 2 Litt mer story
+2 > 3 
+3 > 4 bilde med 404
 
-- Hvordan få inn "Snu" i availableCommands for hvert level. Snu kan være både høyre og venstre.
+
+Bevegelse, snu, flytte spiller.
+Plukke opp ting og legge til inventory. 
+
+Bilder til Pickups, Mål, Terminaler etc..
+
+
 
 
 "Kjekt å ha":
 - Kanskje en kort quiz? type, Kahoot, med 1 spørsmål?
 - Story dekker spillbrettet, program og commands(om det blir for lite med spillbrettet)
 - Trykke på 1 knapp, og så på en tom
+- Mobilversjon
 
 
 
@@ -44,7 +55,16 @@ Level 2 "Snu"
     Rookie går forbi logikk og kode han ikke forstår hvordan han skal bruke.  
 Level 3 "Plukk opp" Objekt: Loop
     Get Wizard dukker opp, Rookie får i oppdrag om å plukke opp en loop. Siden kræsjer.
-Level 4 "Bruk" Objekt: 
+Level 4 "Bruk" Objekt:
     Etter siden har kræsjet, må Rookie komme seg til Academy.
     Get Wizard ber Rookie om å komme til akademiet for en prat.
 Level 5 "Plukk
+
+Story levels "hook"
+Overlay 1 - 
+Level 1 -
+Overlay 2 -
+Level 2 - 
+Level 3 - 
+Level 4 - 
+Level 5 - random

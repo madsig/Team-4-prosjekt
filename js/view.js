@@ -88,7 +88,7 @@ function getItems(index) {
 
 function generateProgramWindow() {
     let programList = [...model.game.runtime.program.commands];
-    let programHTML = `<div><h1>Program</h1><div class="programWindow" style="height:${(programList.length * 40) + 60}px;">`
+    let programHTML = `<div><h1>Program</h1><div class="programWindow" style="height:${(programList.length * 44) + 60}px;">`
     let btnText = "";
     for (let i = 0; i < programList.length; i++) {
         btnText = model.game.commands[programList[i].commandId]
@@ -101,7 +101,7 @@ function generateProgramWindow() {
     programHTML += /*HTML*/`
         <div class="programControlButtons">
         <button ${model.game.runtime.program.commands.length == 0 ? "disabled":""} class="resetButton" onclick="resetProgramList()">↺</button>
-        <button ${model.game.runtime.program.commands.length == 0 ? "disabled":""} class="runProgramButton" onclick="runProgram()">⇾</button>
+        <button ${model.game.runtime.program.commands.length == 0 ? "disabled":""} class="runProgramButton" onclick="runProgram()">⏵</button>
         </div></div></div>`
     return programHTML;
 }
@@ -109,7 +109,7 @@ function generateProgramWindow() {
 
 function generateCommandsWindow() {
     let commandList = [...model.game.levels[model.game.runtime.currentLevel].availableCommands];
-    let commandsHTML = `<div><h1>Commands</h1><div class="commandsWindow" style="height:${commandList.length * 40}px;">`
+    let commandsHTML = `<div><h1>Commands</h1><div class="commandsWindow" style="height:${(commandList.length * 44)+10}px;">`
 
     for (let i = 0; i < commandList.length; i++) {
         commandsHTML += `<button id="${commandList[i]}" class="codeButtonDefault" onclick="moveCommandToProgram(${commandList[i]})">${model.game.commands[i].name}</button>`
@@ -122,13 +122,15 @@ function generateCommandsWindow() {
 function generateLevelsWindow() {
     const currentLevel = model.game.runtime.currentLevel;
     let levelHTML = /*HTML*/ `
-        <div class="levelsWindow">
+        <div>
             <h2 class="levelsHeader">Levels</h2>
+            <div class="levelsWindow">
             <button class="${currentLevel != 0 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(1)">1</button>
             <button class="${currentLevel != 1 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(2)">2</button>
             <button class="${currentLevel != 2 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(3)"> 3</button>
             <button class="${currentLevel != 3 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(4)">4</button>
-        </div>
+            <button class="${currentLevel != 3 ? "levelButton random" : "levelButtonDisabled"}" onclick="changeLevel(5)">Random</button>
+        </div></div>
     `;
     return levelHTML;
 }

@@ -4,13 +4,12 @@ body{
     background-color: #EFF0F0;
 }
 h1,h2,h3{
-    margin-bottom: 0%;
     font-family: 'Lato', sans-serif;
     color: #000000;
     margin-top: 0%;
-    margin-bottom: 2%;
+    margin-bottom: 0.4em;
     text-align: left;
-    font-size: 16pt;
+    font-size: 18pt;
    
 }
 button{
@@ -33,24 +32,24 @@ button:disabled{
 
 .container {
     display: grid;
-    height: 100vh;
+    /* width: 60vw; */
+
+    height: 80vh;
     grid-template-columns: 458px 300px 300px;
     grid-template-rows: 500px 200px 200px;
     grid-template-areas:
         'gameWindow program commands'
         'levels program commands'
         '. program commands';
+
+    /* justify-content: space-evenly; */
 }
 
 .gameWindow {
-    margin-top: 0%;
     grid-area: 'gameWindow';
-    /* border: solid black 1px; */
     height: 448px;
     display: flex;
-    /* align-items: center;
-    justify-content: center; */
-    border-radius: 10px;
+    
 }
 
 .gameGrid {
@@ -87,8 +86,8 @@ button:disabled{
 }
 
 .programWindow {
-    margin-left: 1%;
-    margin-right: 2%;
+    margin-left: 2%;
+    margin-right: 4%;
     min-height: 60px;
     display: flex;
     flex-direction: column;
@@ -109,32 +108,61 @@ button:disabled{
     grid-area: 'commands';
     /* border: solid black 2px; */
     /* border-radius: 10px; */
-    height: 900px;
-    justify-content: top;
+    height: 80px;
+    justify-content: center;
     align-items: center;
     background-color: #ffffff; 
 }
 
+.levelsHeader{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
 .levelsWindow {
-
-    height: 100px;
+    display: flex;
+    height: 40%;
     width: 98%;
     grid-area: 'levels';
     /* border: solid rgb(251, 178, 70) 2px; */
     /* border-radius: 10px; */
     background-color: white;
+    justify-content: space-evenly;
+    align-items: center;
+
 }
-.levelsWindow>h2{
-    margin-bottom: 5%;
+.levelButton.random{
+    width: 100px;
+    font-size: 15pt;
 }
+.levelButton {
+    height: 50px;
+    width: 50px;
+    background-color: #EFF0F0;
+    border: none;
+    /* border-radius: 10px; */
+    color: black;
+    font-size: 15pt;
+    text-align: center;
+}
+.levelButtonDisabled {
+    height: 50px;
+    width: 50px;
+    background-color: #A6A6A6;
+    border: none;
+    /* border: #FFBD59 solid 2px; */
+    /* border-radius: 10px; */
+    color: black;
+    text-align: center;
+}
+
+
 
 /* The color when the codeButtons are in the commands list */
 .codeButtonDefault {
     width: 60%;
-    height: 80px;
-    margin-top: 5px;
-    margin-bottom: 0px;
-    background-color: #d1d1d1;
+    height: 40px;
+    margin: 1.2%;
+    background-color: #eeeeee;
     border: none;
     /* border-color: #ffffff; */
     /* border-radius: 10px;     */
@@ -143,10 +171,9 @@ button:disabled{
 /* The color when the codeButtons are in the program list */
 .codeButtonProgram{
     width: 60%;
-    height: 80px;
-    margin-top: 5px;
-    margin-bottom: 0px;
-    background-color: #d1d1d1;
+    height: 40px;
+    margin: 1.2%;
+    background-color: #eeeeee;
     border: none;
     /* border-color: #ffffff; */
     /* border-radius: 10px;     */
@@ -155,48 +182,33 @@ button:disabled{
 /* The changes in color if the command is correct or not. */
 .codeButtonSuccess{
     width: 60%;
-    height: 80px;
-    margin-top: 3px;
-    margin-bottom: 2px;
+    height: 40px;
+    margin: 1.2%;
     background-color: #21eacc;
-    border-color: #9dfa93;
+    border: none;
+
+    /* border-color: #9dfa93; */
     /* border-radius: 10px; */
 }
 .codeButtonFailed{
     width: 60%;
-    height: 80px;
-    margin-top: 2px;
-    margin-bottom: 2px;
+    height: 40px;
+    margin: 1.2%;
     background-color: #fc6d6d;
-    border-color: #f47272;
-    /* border-radius: 10px; */
-}
-
-
-
-.levelButton {
-    height: 50px;
-    width: 50px;
-    background-color: lightgray;
     border: none;
+
+    /* border-color: #f47272; */
     /* border-radius: 10px; */
-    color: black;
 }
-.levelButtonDisabled {
-    height: 50px;
-    width: 50px;
-    background-color: rgb(156, 156, 156);
-    border: none;
-    /* border: #FFBD59 solid 2px; */
-    /* border-radius: 10px; */
-    color: black;
-}
+
+
 
 
 
 .programControlButtons{
     all:unset;
-    margin: 2%;
+    margin-top: 3%;
+    margin-bottom: 1.2%;
     height: 60px;
     width: 100%;
     display: flex;
@@ -224,8 +236,11 @@ button:disabled{
     /* border-color: green; */
     /* border-radius: 10px; */
     color: white;
+    font-size: 21pt;
     text-align: center;
+    padding-bottom: 2%;
 }
+
 
 #canvasRookie {
     border: dotted white 1px;
