@@ -6,17 +6,34 @@
 
 
 
-Todo:
-- Vi dropper dør-funksjonalitet
-- "Start spill" siden må kunne gjentas på flere levels, for å fortelle historie
 
-- Hvordan få inn "Snu" i availableCommands for hvert level. Snu kan være både høyre og venstre.
+
+
+Todo:
+Overlay:
+Story, hvorfor skal spilleren gjøre det den skal gjøre: Skal komme seg til GET academy for 
+Pre-Level 1 - Overlay med Intro/story, en Hook, hva skal spilleren gjøre. 
+1 > 2 Litt mer story
+2 > 3 
+3 > 4 bilde med 404
+
+
+Bevegelse, snu, flytte spiller.
+Plukke opp ting og legge til inventory. 
+
+Bilder til Pickups, Mål, Terminaler etc..
+
+
+
+
+
 
 
 "Kjekt å ha":
 - Kanskje en kort quiz? type, Kahoot, med 1 spørsmål?
 - Story dekker spillbrettet, program og commands(om det blir for lite med spillbrettet)
 - Trykke på 1 knapp, og så på en tom
+- Mobilversjon
 
 
 
