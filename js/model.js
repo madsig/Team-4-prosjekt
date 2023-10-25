@@ -18,11 +18,13 @@ let model = {
 
     game: {
         runtime: {
-            currentLevel: 1,
+            currentLevel: 2,
             player: {
                 index: 0, //The index of board.paths[]
                 direction: 1, //0 north, 1 east, 2 south, 3 west.
                 inventory: null,
+                marginTop: 1,
+                marginLeft: 0,
             },
             board: {
                 backgroundImagesCache: [],
@@ -79,7 +81,7 @@ let model = {
             },
             {
                 id: 2,
-                characterStartIndex: 39,
+                characterStartIndex: 19,
                 finishIndex: 37,
                 inventory: [
                     { id: 0, name: 'kake', indexOnBoard: 10, iconUrl: 'img/cake.png', pickedUp: false, },
@@ -96,10 +98,7 @@ let model = {
                 id: 3,
                 characterStartIndex: 0,
                 finishIndex: 48,
-                inventory: [
-                    { id: 0, name: 'kake', indexInBoard: 16, iconUrl: 'img/cake.png', pickedUp: false, },
-                    { id: 1, name: 'kake', indexInBoard: 23, iconUrl: 'hliah.png', pickedUp: false, }
-                ],
+                inventory: [],
                 //test
                 paths: [0, 1, 8, 7, 14, 15, 22, 21, 28, 29, 36, 35, 42, 43, 44, 37, 30, 23, 16, 9, 2, 3, 10, 17, 24, 25, 18, 11, 4, 5, 6, 13, 12, 19, 20, 27, 26, 33, 34, 41, 40, 39, 32, 31, 38, 45, 46, 47, 48],
                 startDirection: 1,
@@ -123,11 +122,17 @@ let model = {
             'endE': "img/tiles/right_end.png",
             'endW': "img/tiles/left_end.png",
         },
+        inventoryImage: "img/borderImg.png",
         playerImage: "img/rookiefront1.png", //burde være array eller objekt for å få rettning, kommer ann på canvas
         flagImage: "img/flag.png",
         itemImages: [
             { yellowKeyIcon: "img/yellowkey.png" },
-            { yellowDoor: "img/yellowdoor.png" }
+            { yellowDoor: "img/yellowdoor.png" },
         ],
+    },
+
+    debug: {
+        //test
+        pathObject: {},
     },
 }

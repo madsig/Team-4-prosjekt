@@ -34,6 +34,7 @@ function resetPlayerPosition(){
 function runProgram(){
     //Go through the program list of commands
     stepThroughList()
+    //moveCharacter()
 }
 
 function resetProgramButtonStates(){
@@ -43,23 +44,72 @@ function resetProgramButtonStates(){
 
 function stepThroughList(){
     resetProgramButtonStates()
+    const player = model.game.runtime.player;
     let stepCounter = 0;
     let i = 0;
+    let marginCounter = 0;
 
+    let charPosition = 0;
+    let charDistance = 50;
+    
+    
     let interval = setInterval(()=>{
         if(stepCounter >= model.game.runtime.program.commands.length -1){
             clearInterval(interval)
         }
-        //Placeholder: Check if the move is valid or not here
-        model.game.runtime.program.commands[stepCounter].isSuccess = true;
-        moveCharacter(i)
-        i++;
-        stepCounter++;
-        updateView()
-        }, 1000)
-}
 
-function moveCharacter(i){
+      //  requestAnimationFrame(animate);
+        model.game.runtime.program.commands[stepCounter].isSuccess = true;
+        let slideImageInterval = setInterval(() => {
+            if(marginCounter >= 100){
+                clearInterval(slideImageInterval);
+            }
+            console.log("%cRunning inner interval", 'color: green; font-size: 12px;')
+            marginCounter += 5;
+            if(player.direction == 0){//Facing North
+                //model.game.runtime.player.marginTop = -marginCounter
+                moveCharacter(-marginCounter)
+                
+            //    canvasRookie.style.top = -marginCounter+'px'
+            }else if(player.direction == 1){//Facing East
+                //model.game.runtime.player.marginLeft = marginCounter
+                //canvasRookie.style.top = -marginCounter+'px'
+                moveCharacter(marginCounter)
+            }else if(player.direction == 2){//Facing South
+                //model.game.runtime.player.marginTop = marginCounter
+                moveCharacter(marginCounter)
+                //canvasRookie.style.top = -marginCounter+'px'
+            }else if(player.direction == 3){//Facing West
+                //model.game.runtime.player.marginLeft = -marginCounter
+                moveCharacter(-marginCounter)
+            }
+
+            updateView()
+
+        }, 50);
+        
+        if(marginCounter >= 100){
+            console.log("%cRunning outer interval", 'color: red; font-size: 12px;')
+            model.game.runtime.player.marginTop = 0;
+            moveCharacter(i)
+            i++;
+            stepCounter++;
+            marginCounter = 0;
+        updateView()}
+        }, 1000)
+    }
+
+let charPosition = 0;
+let charDistance = 6;
+
+function moveCharacter(charDistance){
+   charPosition += charDistance;
+   console.log(charPosition)
+   document.getElementById("canvasRookie").style.top = charPosition + 'px';
+}
+    
+
+function moveCharacter2(i){
     commandList = model.game.runtime.program.commands;
     levelInfo = model.game.boards[model.game.runtime.currentLevel];
     playerIndex = model.game.runtime.player.index;
@@ -67,7 +117,7 @@ function moveCharacter(i){
 
     
         if(commandList[i].commandId == 0){ //Gå fram
-            console.log("test")
+            console.log("Running command ID: "+commandList[i].commandId)
             if(characterDir == 0){
                 model.game.runtime.player.index -=7;
                 playerState = 'walkUp';
@@ -87,22 +137,30 @@ function moveCharacter(i){
         }else if(commandList[i].commandId == 2){//Snu høyre
             turnRight();
         }else if(commandList[i].commandId == 3){//Plukk opp
-            pickUpItem();
+            console.log("plukk opp")
+            pickUpItem(playerIndex);
         }else if(commandList[i].commandId == 4){//Bruk
             useItem();
             }
+
+       
         
 
-       // console.log("direction: "+model.game.runtime.player.direction)
     }
     
-//     }
-// }
-//index = (maxNr + index) % maxNr
 
-function pickUpItem(){
-    //pick up item on index in paths[inventory.itemOnIndex]
-    //add item to players "inventory" window, bottom of the gameWindow
+function pickUpItem(index){
+    for (let i=0; i<model.game.runtime.board.inventory.length; i++) {
+        if (model.game.runtime.board.inventory[i].indexOnBoard === index) {
+            console.log("item found")
+            console.log(i)
+            model.game.runtime.board.inventory[i].pickedUp = true;
+            model.game.runtime.player.inventory = i;
+            updateView();
+            return;
+        }
+    }
+    console.log("no item")
 }
 function useItem(){
     //use item on index in paths[]

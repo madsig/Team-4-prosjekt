@@ -5,7 +5,7 @@ window.addEventListener('load', function() {
 function getCanvas() {
     const canvas = document.getElementById('canvasRookie'); // tegnes opp i viewet
     const ctx = canvas.getContext('2d');
-    
+
     const CANVAS_WIDTH = canvas.width = 64;
     const CANVAS_HEIGHT = canvas.height = 64;
 
@@ -59,7 +59,7 @@ function getCanvas() {
         }
         spriteAnimations[state.name] = frames;
     });
-    console.log(spriteAnimations);
+   // console.log(spriteAnimations);
 
     function animate() {
         ctx.clearRect(0, 0, CANVAS_HEIGHT, CANVAS_WIDTH);
@@ -76,5 +76,5 @@ function getCanvas() {
 
     };
     animate();
-};
 
+};

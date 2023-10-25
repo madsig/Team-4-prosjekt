@@ -8,7 +8,7 @@ function updateView() {
         ${generateCommandsWindow()}
         ${generateLevelsWindow()}
     `;
-    getCanvas()
+    //getCanvas()
 }
 
 function initializeLevel() {
@@ -16,6 +16,7 @@ function initializeLevel() {
     model.game.runtime.player.direction = model.game.runtime.board.startDirection;
     model.game.runtime.player.index = model.game.runtime.board.characterStartIndex;
     model.game.runtime.board.backgroundImagesCache = [];
+    model.app.pathObject = {};
 }
 
 function generateGameWindow() {
@@ -25,13 +26,13 @@ function generateGameWindow() {
     const playerIndex = model.game.runtime.player.index;
     let gameWindowHtml = '';
     let backgroundImage;
-    console.log('%c------------------------', 'color: red; font-size: 28px;');
-    console.log(pathArray);
+    //console.log('%c------------------------', 'color: red; font-size: 28px;');
+    //console.log("pathArray: "+pathArray);
     for (let i = 0; i < 7 ** 2; i++) {
         backgroundImage = board.backgroundImagesCache.length === 49 ? board.backgroundImagesCache[i] : getBackgroundImage(i);
         let flag = board.finishIndex === i ? game.flagImage : '';
         //let player = game.boards[currentBoard].characterStartIndex === i ? game.playerImage : '';
-        let player = playerIndex === i ? '<canvas id="canvasRookie"></canvas>' : '';
+        let player = playerIndex === i ? `<canvas style="top: ${model.game.runtime.player.marginTop + 50}%; left: ${model.game.runtime.player.marginLeft + 50}%" id="canvasRookie"></canvas>` : '';
         gameWindowHtml += /*HTML*/ `
             <div class="gridBlock" style="background-image: url(${backgroundImage})">
                 <div class="gridNumber">${model.app.isTesting ? i:""}</div>
@@ -39,6 +40,7 @@ function generateGameWindow() {
             </div>
         `;
     }
+    //console.table(model.degub.pathObject)
     return '<div class="gameGrid">' + gameWindowHtml + '</div>';
 }
 
@@ -51,12 +53,13 @@ function getBackgroundImage(index) {
     let nextPathDiff = pathArray[pathIndex + 1] - index;
     let lastPathDiff = pathArray[pathIndex - 1] - index;
     let totalDiff = nextPathDiff + lastPathDiff;
-    if (pathArray.includes(index)) console.log({index, pathIndex, nextPathDiff, lastPathDiff, totalDiff});
+    if (pathArray.includes(index)) model.debug.pathObject[index] = {pathIndex, nextPathDiff, lastPathDiff, totalDiff};
 
     const diff = totalDiff;
     const pi = pathwayImages;
     const next = nextPathDiff;
     const last = lastPathDiff;
+
 
     let image =  pathIndex === -1 ? game.backgroundImages[RNG(game.backgroundImages.length)]
         : diff === 8 ? pi.turnSE
@@ -69,13 +72,17 @@ function getBackgroundImage(index) {
         : next === 7 || last === 7 ? pi.endN
         : next === -7 || last === -7 ? pi.endS
         : game.backgroundImages[-1];
+    if (index === 45) image = game.inventoryImage;  
     game.runtime.board.backgroundImagesCache.push(image);
     return image;
 }
 
 function getItems(index) {
-    const board = model.game.runtime.board;
-    const inventory = board.inventory
+    const runtime = model.game.runtime;
+    const inventory = runtime.board.inventory
+
+    if (index === 45 && runtime.player.inventory != null) return inventory[runtime.player.inventory].iconUrl;
+
     let item = '';
     if (inventory.length === 0) return item;
     for (let j=0; j<inventory.length; j++) {
