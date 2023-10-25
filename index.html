@@ -4,89 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team 4 prosjektoppgave</title>
-    <style>
-        .game {
-            display: grid;
-            grid-template-columns: repeat(7, 64px);
-            grid-template-rows: repeat(7, 64px);
-        }
+    <title>Start på opptegnings funksjon</title>
 
-        .game>div {
-            background-image:  url("grass.png");
-             /* border: 1px solid rgb(37, 148, 37); */
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
+
+
 </head>
 
-<body onload="updateView()">
-    <div id="game" class="game"></div>
-    
-
-    <script>
-        // Test
-        function updateView() {
-            document.getElementById("game").innerHTML = `${drawBoard(7)}`
-        }
-
-        function drawBoard(size) {
-            boardHTML = ""
-            let boardLength = size * size
-            for (let i = 0; i < boardLength; i++) {
-                if (i == 8) {
-                    boardHTML += `<div style="background-image: url(./img/tiles/grass.png);"><img src="./img/rookie.png"></div>`
-                }else if (i == 9) {
-                    boardHTML += `<div style="background-image: url(./img/tiles/grass.png);"><img src="./img/tiles/locked_gate.png"></div>`
-                }else if (i == 10) {
-                    boardHTML += `<div style="background-image: url(./img/tiles/grass.png);"><img src="./img/tiles/item_loop.png"></div>`
-                }else if (i == 11) {
-                    boardHTML += `<div style="background-image: url(./img/tiles/grass.png);"><img src="./img/tiles/item_function.png"></div>`
-                }
-                else if (i == 1) {
-                    boardHTML += `<div style="background-image: url(./img/tiles/grass.png);"><img src="./img/rookiefront1.png"></div>`
-                }
-                else if (i == 15) {
-                    boardHTML += `<div style="background-image: url(./img/tiles/grass.png);"><img src="./img/rookieback1.png"></div>`
-                }
-
-                //Man kan bruke denne til å legge til flere "items", kun i img taggen sånn at gresset vises som background.
-                // else if (i == 12) {
-                //     boardHTML += `<div style="background-image: url(./img/tiles/grass.png);"><img src="./img/tiles/locked_gate.png"></div>`
-                // }
-
-
-                
-                else if (i == 31) {
-                    boardHTML += `<div style="background-image: url(./img/tiles/vertical_path.png);">${i}</div>`
-                }else if (i == 38) {
-                    boardHTML += `<div style="background-image: url(./img/tiles/south_end.png);">${i}</div>`
-                }else if (i == 24) {
-                    boardHTML += `<div style="background-image: url(./img/tiles/turn_1.png);">${i}</div>`
-                }else if (i == 25) {
-                    boardHTML += `<div style="background-image: url(./img/tiles/horizontal_path.png);">${i}</div>`
-                }else if (i == 26) {
-                    boardHTML += `<div style="background-image: url(./img/tiles/turn_2.png);">${i}</div>`
-                }else if (i == 33) {
-                    boardHTML += `<div style="background-image: url(./img/tiles/vertical_path.png);">${i}</div>`
-                }else if (i == 40) {
-                    boardHTML += `<div style="background-image: url(./img/tiles/turn_3.png);">${i}</div>`
-                }else if (i == 39) {
-                    boardHTML += `<div style="background-image: url(./img/tiles/turn_4.png);">${i}</div>`
-                }else if (i == 32) {
-                    boardHTML += `<div style="background-image: url(./img/tiles/north_end.png);">${i}</div>`
-                }else if (i == 22) {
-                    boardHTML += `<div style="background-image: url(./img/tiles/left_end.png);">${i}</div>`
-                }else if (i == 23) {
-                    boardHTML += `<div style="background-image: url(./img/tiles/right_end.png);">${i}</div>`
-                }
-
-                
-
-                else boardHTML += `<div style="background-image: url(./img/tiles/grass.png);">${i}</div>`
-            }
-            return boardHTML;
-        }
-    </script>
+<body onload="initializeLevel(), updateView()">
+    <div id="app" class="container"></div>
+    <script src="js/model.js"></script>
+    <script src="js/view.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="js/character.js"></script>
 </body>
 
 </html>
