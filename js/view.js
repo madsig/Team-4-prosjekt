@@ -8,7 +8,7 @@ function updateView() {
         ${generateCommandsWindow()}
         ${generateLevelsWindow()}
     `;
-    //getCanvas()
+    getCanvas()
 }
 
 function initializeLevel() {
@@ -17,6 +17,7 @@ function initializeLevel() {
     model.game.runtime.player.index = model.game.runtime.board.characterStartIndex;
     model.game.runtime.board.backgroundImagesCache = [];
     model.app.pathObject = {};
+    model.game.runtime.player.inventory = null;
 }
 
 function generateGameWindow() {

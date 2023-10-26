@@ -18,7 +18,7 @@ let model = {
 
     game: {
         runtime: {
-            currentLevel: 2,
+            currentLevel: 1,
             player: {
                 index: 0, //The index of board.paths[]
                 direction: 1, //0 north, 1 east, 2 south, 3 west.
@@ -36,15 +36,17 @@ let model = {
                 //kommandoene som ikke har kjørt enda er null
                 //setter inn kommandoene som ligger i lista til levels og endrer bare her
                 commands: [],
+                isRunning: false,
             },
+
 
 
         },
         //
         commands: [
             { id: 0, name: 'Gå fram', jsName: 'moveForward()', },  // eval
-            { id: 1, name: 'Snu venstre', jsName: 'turn(Left)', },
-            { id: 2, name: 'Snu høyre', jsName: 'turn(Right)', },
+            { id: 1, name: 'Snu ↻', jsName: 'turn(Left)', },
+            { id: 2, name: 'Snu ↺', jsName: 'turn(Right)', },
             { id: 3, name: 'Plukk opp', jsName: 'pickUpItem()', },
             { id: 4, name: 'Bruk', jsName: 'useItem()', },
 

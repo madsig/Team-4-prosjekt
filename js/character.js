@@ -1,5 +1,7 @@
  //document.addEventListener('DOMContentLoaded', function(){
-window.addEventListener('load', function() {
+let playerState = 'idle';
+let staggerFrames = 14;
+ window.addEventListener('load', function() {
     getCanvas();
 });
 function getCanvas() {
@@ -13,14 +15,14 @@ function getCanvas() {
     playerImage.src = './img/allRookie.png';
     const spriteWidth = 64;
     const spriteHeight = 64;
-    let playerState = 'walkRight';
+    
     // const dropDown = document.getElementById('animations'); 
     //  model.game.commands.addEventListener('change', function (e) { // knyttes til commands
     //  //   playerState = e.target.value; //Vi endrer denne for å endre animasjon. 
     // })
 
     let gameFrame = 0;
-    const staggerFrames = 14;
+    //staggerFrames = 3;   //14 default
     const spriteAnimations = [];
     const animationStates = [
         {
