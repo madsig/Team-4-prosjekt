@@ -8,6 +8,7 @@ function moveCommandToProgram(id) {
 
     });
     resetProgramButtonStates();
+    resetItems();
     resetPlayerPosition();
     updateView();
 }
@@ -50,27 +51,27 @@ function resetProgramButtonStates() {
 
 function stepThroughList() {
     resetProgramButtonStates();
-    model.game.runtime.program.isRunning = true;
+    model.game.runtime.program.isRunning = true; 
     console.log("running commands")
     const player = model.game.runtime.player;
     let stepCounter = 0;
-    let i = 0;
     let marginCounter = 0; // 0
-    let currentCommand = model.game.runtime.program.commands[i]
-    staggerFrames = 3;
+    let currentCommand = model.game.runtime.program.commands[stepCounter]
+    staggerFrames = 3; // 3 - Default during movement, so the animation has time to run in the pause between changes.
+
 
     let interval = setInterval(() => {
         if (model.game.runtime.program.commands.length <= stepCounter) {
-            clearInterval(interval)
-            staggerFrames = 14;
-            playerState = 'idle';
-            checkWinLoss()
-            model.game.runtime.program.isRunning = false;
-            console.log("finnished running commands")
+            clearInterval(interval) //Stop running the interval
+            staggerFrames = 14; //Default speed for idle animations
+            playerState = 'idle'; //Resets the state to the default idle animation after all commands are run.
+            checkWinLoss() //Checks if the player ended up on the goal index
+            model.game.runtime.program.isRunning = false; 
+            console.log("finished running commands")
             return;
         }
 
-        currentCommand = model.game.runtime.program.commands[i]
+        currentCommand = model.game.runtime.program.commands[stepCounter]
         // Doing things
         if(currentCommand.commandId == 1){
             turnLeft()
@@ -81,7 +82,7 @@ function stepThroughList() {
             marginCounter = 100;
             staggerFrames = 14;
         }else if(currentCommand.commandId == 3){
-            pickUpItem()
+            pickUpItem(model.game.runtime.player.index)
             marginCounter = 100;
             staggerFrames = 14;
         }else if(currentCommand.commandId == 4){
@@ -96,7 +97,7 @@ function stepThroughList() {
             console.log("%cRunning inner interval", 'color: green; font-size: 12px;')
             if(currentCommand.commandId == 0){
                 staggerFrames = 3;
-                marginCounter += 25; // 15 default
+                marginCounter += 25; // How far the character moves pr update.
                 if (player.direction == 0) {//Facing North
                     model.game.runtime.player.marginTop = -marginCounter
                     playerState = 'walkUp';            
@@ -116,10 +117,9 @@ function stepThroughList() {
             console.log("%cRunning outer interval", 'color: red; font-size: 12px;')
             model.game.runtime.program.commands[stepCounter].isSuccess = true;
             if(currentCommand.commandId == 0)
-                moveForward(i)
+                moveForward(stepCounter)
             model.game.runtime.player.marginTop = 0;
             model.game.runtime.player.marginLeft = 0;
-            i++;
             stepCounter++;
             marginCounter = 0;
         }
@@ -130,6 +130,11 @@ function stepThroughList() {
 
 function pickUpItem(index) {
     const boardInv = model.game.runtime.board.inventory;
+    console.log(`player inventory: ${model.game.runtime.player.inventory}`)
+    if (model.game.runtime.player.inventory != null) {
+        console.log("inventory full");
+        return;
+    }
     for (let i = 0; i < boardInv.length; i++) {
         if (boardInv[i].indexOnBoard === index && !boardInv[i].pickedUp) {
             console.log("item found")
@@ -155,7 +160,7 @@ function useItem() {
 }
 function resetItems() {
     const currentBoard = model.game.levels[model.game.runtime.currentLevel].boardId;
-    model.game.runtime.board.inventory = model.game.boards[currentBoard].inventory;
+    model.game.runtime.board.inventory = JSON.parse(JSON.stringify(model.game.boards[currentBoard].inventory));
     model.game.runtime.player.inventory = null;
 }
 

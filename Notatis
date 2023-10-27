@@ -14,15 +14,44 @@ Pre-Level 1 - Overlay med Intro/story, en Hook, hva skal spilleren gjøre.
 2 > 3 
 3 > 4 bilde med 404
 
+Program>Kommandoer
+Grønn ramme rundt kommandoer som holder på å kjøre? 
 
-Overlay
-Plukke opp ting og legge til inventory.
-Designe level 3 og 4
-Random Levels
-Bilder til Pickups, Mål, Terminaler etc..
-Bilde hvor Items skal ligge (64x64)
+Overlay, med bilder av karakterene
+Designe level 3-10
+Når spilleren er i mål, og programmet er ferdig, legg inn knapp som går til neste level.
 
 
+Trenger:
+1. Høyoppløselig bilde av karakter til Overlay
+2. Bilder av ting
+3. Story ferdig skrevet og fordelt på 4 lvls
+
+
+Items (.png)
+Item            Icon              Text
+Infinite Loop - liggende 8-tall - 
+Datamaskin -    ??              - ??
+Eskil -         Tryne           - Jeg finner ikke unmute knappen?!
+Terje -         Tryne           - Kan du finne Eskil? Chorei starter om 2 minutt!
+unMute knapp -  ??              - Hei alle sammen! Vi gjør alle feil, feiling er læring. Da starter vi dagen med chorei!
+
+
+1 - Story
+TerjeFjes // Hei, Rookie! Etter 10 uker i programmet vårt vil du kunne lage dette spillet og mer! Kun fantasien setter grenser.
+Uten mål og mening vil du nok ikke finne frem. Ta dine første steg!
+2 - Story
+TerjeFjes // Med litt input fra kodelærere vil reisen bli enda lettere.
+3 - Story
+TerjeFjes // Jeg har det litt travelt, må dra til GetAcademy, møt meg der! Plukk opp loopen der er du snill.
+4 - Story
+TerjeFjes // En infinite loop!! Da går det galt. Jeg må avgårde! Kan du finne Eskil? Morgenmøte starter om 2minutter!
+5 - "Random ting til GetAcademy"
+Eskil // Jeg finner ikke unMute knappen?! Kan du hjelpe meg?
+6 - "Random"
+Datamaskin, en maskin med litt kraft kan være greit å ha.
+7 - "Random"
+Headsett & mikrofon er essensielt for å sikre god kommunikasjon med laget ditt.
 
 
 "Kjekt å ha":

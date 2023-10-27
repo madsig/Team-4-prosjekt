@@ -4,6 +4,7 @@ let model = {
         theme: 'light',
         gameTitle: "Rookie and the GET wizard",
         isTesting: true,
+        showOverlay: true,
 
         //Trenger man dette i modellen?
         colorPallete: {
@@ -39,8 +40,6 @@ let model = {
                 isRunning: false,
             },
 
-
-
         },
         //
         commands: [
@@ -64,6 +63,7 @@ let model = {
         boards: [
             {
                 id: 0,
+                boardTask:"Ta de første stegene..",
                 characterStartIndex: 23,
                 finishIndex: 25,
                 inventory: [],
@@ -73,6 +73,7 @@ let model = {
             },
             {
                 id: 1,
+                boardTask:"Ut mot høyre",
                 characterStartIndex: 16,
                 finishIndex: 32,
                 inventory: [],
@@ -83,7 +84,8 @@ let model = {
             },
             {
                 id: 2,
-                characterStartIndex: 19,
+                boardTask:"Plukk opp *something*",
+                characterStartIndex: 39,
                 finishIndex: 37,
                 inventory: [
                     { id: 0, name: 'kake', indexOnBoard: 10, iconUrl: 'img/cake.png', pickedUp: false, },
@@ -98,18 +100,27 @@ let model = {
             },
             {
                 id: 3,
+                boardTask:"???",
                 characterStartIndex: 0,
                 finishIndex: 48,
                 inventory: [],
                 //test
-                paths: [0, 1, 8, 7, 14, 15, 22, 21, 28, 29, 36, 35, 42, 43, 44, 37, 30, 23, 16, 9, 2, 3, 10, 17, 24, 25, 18, 11, 4, 5, 6, 13, 12, 19, 20, 27, 26, 33, 34, 41, 40, 39, 32, 31, 38, 45, 46, 47, 48],
+                paths: [2,1,0,7,14,15,16,9,8, 18,17,23,24,25,31,30, 32,33,34,40,47],
                 startDirection: 1,
             },
         ],
 
         directions: ['north','east','south', 'west'],
 
-        backgroundImages: ["img/tiles/field-of-roses.png","img/tiles/grass.png", "img/tiles/grass_2.png", "img/tiles/grass_3.png", "img/tiles/grass_4.png",],
+        backgroundImages: [
+            "img/tiles/grass.png", "img/tiles/grass_2.png",
+            "img/tiles/grass_3.png", "img/tiles/grass_4.png", 
+            "img/tiles/grass.png", "img/tiles/grass_2.png",
+            "img/tiles/grass_3.png", "img/tiles/grass_4.png", 
+            "img/tiles/field-of-roses.png", "img/tiles/Field_Of_Daisy.png",
+            "img/tiles/Field_Of_Colours2.png", "img/tiles/Field_Of_Orchid2.png",
+            //"img/tiles/Field_Of_Colours.png", "img/tiles/Field_Of_Orchid.png", 
+        ],
         pathwayImages: {
             'vertical': "img/tiles/horizontal_path.png",
             'horizontal': "img/tiles/vertical_path.png",

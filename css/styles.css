@@ -12,6 +12,12 @@ h1,h2,h3{
     font-size: 18pt;
    
 }
+p{
+    font-family: 'Lato', sans-serif;
+    color: #000000;
+    font-size: 16pt;
+}
+
 button{
     font-family: 'Lato', sans-serif;
     font-weight: 800;
@@ -19,9 +25,33 @@ button{
     text-align: left;
 }
 button:disabled{
-    background-color: rgba(128, 128, 128, 0.445);
+    background-color: rgba(255, 183, 120, 0.445);
     color: lightgray;
     border: 0px;
+}
+
+.overlayWindow{
+    width: 65vw;
+    height: 65vh;
+    position: absolute;
+    z-index: 3;
+    background-color: rgba(168, 251, 250, 0.900);
+    
+}
+.overlayWindow>.storyText{
+    margin-left: 15%;
+    margin-right: 15%;
+    text-align: top;
+}
+.overlayWindow>.overlayHeader{
+    text-align:center;
+    margin-top:5%;
+}
+.overlayWindow>.clickToCloseText{
+    text-align:center;
+    margin-top:15%;
+    font-weight: 800;
+    
 }
 
 .levelsHeader{
@@ -204,9 +234,8 @@ button:disabled{
 }
 /* #endregion */
 
+
 /*#region program reset/run */
-
-
 .programControlButtons{
     all:unset;
     margin-top: 3%;
@@ -216,9 +245,6 @@ button:disabled{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-
-    
-
 }
 .resetButton{
     height: 50px;
@@ -260,16 +286,6 @@ button:disabled{
     overflow: visible;
     /* transition: opacity 1s ease-in-out; */
     /* animation: MoveCharacter 1.5s ease-in; */
-}
-
-@keyframes MoveCharacter{
-    
-    0%{
-        transform: translate(-32px, -32px);
-    }
-    100%{
-        transform: translate(-32px, 32px);
-    }
 }
 
 

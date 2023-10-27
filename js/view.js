@@ -1,9 +1,10 @@
 "use strict";
 
-
+/*${generateOverlayWindow()}*/
 function updateView() {
     document.getElementById('app').innerHTML = /*HTML*/ `
-        <div><h1>${model.app.gameTitle}</h1><div class="gameWindow">${generateGameWindow()}</div></div>
+        ${model.app.showOverlay ? generateOverlayWindow() : ''}
+        <div><div style="display:flex;"><img src="img/terje.png"><h1 style="margin-top:10px">${model.game.boards[model.game.runtime.currentLevel].boardTask}</h1></div><div class="gameWindow">${generateGameWindow()}</div></div>
         ${generateProgramWindow()}
         ${generateCommandsWindow()}
         ${generateLevelsWindow()}
@@ -73,7 +74,7 @@ function getBackgroundImage(index) {
         : next === 7 || last === 7 ? pi.endN
         : next === -7 || last === -7 ? pi.endS
         : game.backgroundImages[-1];
-    if (index === 45) image = game.inventoryImage;  
+    if (index === 45 && model.game.runtime.board.inventory.length > 0) image = game.inventoryImage;  
     game.runtime.board.backgroundImagesCache.push(image);
     return image;
 }
@@ -137,8 +138,32 @@ function generateLevelsWindow() {
             <button class="${currentLevel != 1 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(2)">2</button>
             <button class="${currentLevel != 2 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(3)"> 3</button>
             <button class="${currentLevel != 3 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(4)">4</button>
-            <button class="${currentLevel != 3 ? "levelButton random" : "levelButtonDisabled"}" onclick="changeLevel(5)">Random</button>
+            <button class="${currentLevel != 4 ? "levelButton random" : "levelButtonDisabled"}" onclick="changeLevel(5)">Random</button>
         </div></div>
     `;
     return levelHTML;
 }
+
+
+function generateOverlayWindow(){
+   let overlayHTML = /*HTML*/
+   `
+   <div class="overlayWindow" onclick="disableOverlay()">
+    <h2 class="overlayHeader">Title</h2>
+    <p class="storyText">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+    </p>
+
+    <p class="clickToCloseText"> >Click to close< </p>
+    
+   </div>
+    `;
+   return overlayHTML;
+}
+
+function disableOverlay(){
+    model.app.showOverlay = false;
+    updateView()
+}
+
+
