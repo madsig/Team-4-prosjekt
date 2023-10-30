@@ -2,20 +2,23 @@
 
 body{
     background-color: #EFF0F0;
+
 }
 h1,h2,h3{
     font-family: 'Lato', sans-serif;
     color: #000000;
-    margin-top: 0%;
+    margin-top: 8%;
     margin-bottom: 0.4em;
     text-align: left;
     font-size: 18pt;
+
    
 }
 p{
     font-family: 'Lato', sans-serif;
     color: #000000;
-    font-size: 16pt;
+    font-size: 18pt;
+    font-weight: 600;
 }
 
 button{
@@ -31,11 +34,14 @@ button:disabled{
 }
 
 .overlayWindow{
-    width: 65vw;
-    height: 65vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60vw;
+    height: 75vh;
     position: absolute;
     z-index: 3;
-    background-color: rgba(168, 251, 250, 0.900);
+    background-color: rgba(187, 186, 186, 0.908);
     
 }
 .overlayWindow>.storyText{
@@ -47,18 +53,22 @@ button:disabled{
     text-align:center;
     margin-top:5%;
 }
-.overlayWindow>.clickToCloseText{
-    text-align:center;
-    margin-top:15%;
+.overlayWindow>.startButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 20%;
+    margin-top:10%;
+    border: none;
+
+    font-size: 25pt;
+    font-family: 'Lato', sans-serif;
     font-weight: 800;
     
 }
 
-.levelsHeader{
-    display: flex;
-    height: 10px;
-    justify-content: left;
-}
+
 
 .container {
     display: grid;
@@ -125,11 +135,12 @@ button:disabled{
     grid-area: 'program';
     /* border: solid rgb(251, 178, 70) 2px; */
     /* border-radius: 10px; */
-    height: 448px;
+    min-height: 448px;
     justify-content: top;
     align-items: center;
     
     background-color: #ffffff; 
+    overflow: auto;
 }
 
 .commandsWindow {
@@ -138,21 +149,25 @@ button:disabled{
     grid-area: 'commands';
     /* border: solid black 2px; */
     /* border-radius: 10px; */
-    height: 448px;
+    min-height: 448px;
     justify-content: top;
     align-items: center;
     background-color: #ffffff; 
 }
 
 /*#region LevelsWindow */
-
 .levelsHeader{
-    margin-top: 5%;
+    display: flex;
+    height: 10px;
+    justify-content: left;
+    margin-top: 12%;
     margin-bottom: 5%;
 }
+
 .levelsWindow {
-    display: flex;
-    height: 40%;
+    display: grid;
+    grid-template-columns: repeat(5,60px);
+    height: 80%;
     width: 98%;
     grid-area: 'levels';
     /* border: solid rgb(251, 178, 70) 2px; */
@@ -238,7 +253,7 @@ button:disabled{
 /*#region program reset/run */
 .programControlButtons{
     all:unset;
-    margin-top: 3%;
+    margin-top: auto;
     margin-bottom: 1.2%;
     height: 60px;
     width: 100%;
@@ -246,9 +261,24 @@ button:disabled{
     justify-content: space-evenly;
     align-items: center;
 }
+.continueButton{ /*blir ikke bruktt tror jeg?*/
+    height: 50px;
+    width: 150px;
+    background-color: #21EACC;
+    border: none;
+    /* border-color: green; */
+    /* border-radius: 10px; */
+    color: white;
+    font-size: 21pt;
+    text-align: center;
+    padding-bottom: 2%;
+}
+.gapDiv {
+    width: 20px;
+}
 .resetButton{
     height: 50px;
-    width: 60px;
+    width: 80px;
     background-color: rgb(255, 83, 31);
     border: none;
     /* border-color: red; */
@@ -258,7 +288,7 @@ button:disabled{
 }
 .runProgramButton{
     height: 50px;
-    width: 60px;
+    width: 80px;
     background-color: #21EACC;
     border: none;
     /* border-color: green; */
@@ -287,5 +317,6 @@ button:disabled{
     /* transition: opacity 1s ease-in-out; */
     /* animation: MoveCharacter 1.5s ease-in; */
 }
+
 
 

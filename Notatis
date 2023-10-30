@@ -19,7 +19,9 @@ Grønn ramme rundt kommandoer som holder på å kjøre?
 
 Overlay, med bilder av karakterene
 Designe level 3-10
-Når spilleren er i mål, og programmet er ferdig, legg inn knapp som går til neste level.
+***Når spilleren er i mål, og programmet er ferdig, legg inn knapp som går til neste level.
+***Legge story til Board objektet.
+
 
 
 Trenger:

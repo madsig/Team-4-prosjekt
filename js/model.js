@@ -19,7 +19,8 @@ let model = {
 
     game: {
         runtime: {
-            currentLevel: 1,
+            currentLevel: 0,
+            currentLevelStatus: null, //false= level failed, true= level complete, null= not yet attempted.
             player: {
                 index: 0, //The index of board.paths[]
                 direction: 1, //0 north, 1 east, 2 south, 3 west.
@@ -63,7 +64,7 @@ let model = {
         boards: [
             {
                 id: 0,
-                boardTask:"Ta de første stegene..",
+                boardTask:"Ta de første stegene mot mål..",
                 characterStartIndex: 23,
                 finishIndex: 25,
                 inventory: [],

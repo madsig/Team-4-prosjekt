@@ -12,7 +12,7 @@ function getCanvas() {
     const CANVAS_HEIGHT = canvas.height = 64;
 
     const playerImage = new Image();
-    playerImage.src = './img/allRookie.png';
+    playerImage.src = './img/RookiesFinal.png';
     const spriteWidth = 64;
     const spriteHeight = 64;
     
@@ -30,12 +30,20 @@ function getCanvas() {
             frames: 6,
         },
         {
+            name: 'rightIdle',
+            frames: 14,
+        },
+        {
             name: 'walkLeft',
             frames: 6,
         },
         {
+            name: 'leftIdle',
+            frames: 14,
+        },
+        {
             name: 'idle',
-            frames: 7,
+            frames: 14,
         },
         {
             name: 'walkDown',
@@ -44,6 +52,10 @@ function getCanvas() {
         {
             name: 'walkUp',
             frames: 7,
+        },
+        {
+            name: 'upIdle',
+            frames: 14,
         },
         {
             name: 'pickUp',

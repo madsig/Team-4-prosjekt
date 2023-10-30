@@ -4,7 +4,7 @@
 function updateView() {
     document.getElementById('app').innerHTML = /*HTML*/ `
         ${model.app.showOverlay ? generateOverlayWindow() : ''}
-        <div><div style="display:flex;"><img src="img/terje.png"><h1 style="margin-top:10px">${model.game.boards[model.game.runtime.currentLevel].boardTask}</h1></div><div class="gameWindow">${generateGameWindow()}</div></div>
+        <div><div style="display:flex;"><img src="img/eskil.png" style="margin-top:0%"><h1 style="margin-top:5%;">${model.game.boards[model.game.runtime.currentLevel].boardTask}</h1></div><div class="gameWindow">${generateGameWindow()}</div></div>
         ${generateProgramWindow()}
         ${generateCommandsWindow()}
         ${generateLevelsWindow()}
@@ -34,7 +34,7 @@ function generateGameWindow() {
         backgroundImage = board.backgroundImagesCache.length === 49 ? board.backgroundImagesCache[i] : getBackgroundImage(i);
         let flag = board.finishIndex === i ? game.flagImage : '';
         //let player = game.boards[currentBoard].characterStartIndex === i ? game.playerImage : '';
-        let player = playerIndex === i ? `<canvas style="top: ${model.game.runtime.player.marginTop + 50}%; left: ${model.game.runtime.player.marginLeft + 50}%" id="canvasRookie"></canvas>` : '';
+        let player = playerIndex === i ? `<canvas style="top: ${model.game.runtime.player.marginTop + 35}%; left: ${model.game.runtime.player.marginLeft + 50}%" id="canvasRookie"></canvas>` : '';
         gameWindowHtml += /*HTML*/ `
             <div class="gridBlock" style="background-image: url(${backgroundImage})">
                 <div class="gridNumber">${model.app.isTesting ? i:""}</div>
@@ -97,7 +97,7 @@ function getItems(index) {
 
 function generateProgramWindow() {
     let programList = [...model.game.runtime.program.commands];
-    let programHTML = `<div><h1>Program</h1><div class="programWindow" }px;">`
+    let programHTML = `<div><h1>Program</h1><div class="programWindow"">` // style="height:${(programList.length * 44) + 60}px;
     let btnText = "";
     for (let i = 0; i < programList.length; i++) {
         btnText = model.game.commands[programList[i].commandId]
@@ -109,8 +109,9 @@ function generateProgramWindow() {
     }
     programHTML += /*HTML*/`
         <div class="programControlButtons">
-        <button ${model.game.runtime.program.commands.length == 0 ? "disabled":""} class="resetButton" onclick="resetProgramList()">↺</button>
-        <button ${model.game.runtime.program.commands.length == 0 ? "disabled":""} class="runProgramButton" onclick="runProgram()">⏵</button>
+            <button ${model.game.runtime.program.commands.length == 0 ? "disabled":""} class="resetButton" onclick="resetProgramList()">↺</button>
+            <div class="gapDiv"></div>
+            <button ${model.game.runtime.program.commands.length == 0 ? "disabled":""} class="runProgramButton" onclick="runProgram()">⏵</button>
         </div></div></div>`
     return programHTML;
 }
@@ -118,10 +119,12 @@ function generateProgramWindow() {
 
 function generateCommandsWindow() {
     let commandList = [...model.game.levels[model.game.runtime.currentLevel].availableCommands];
-    let commandsHTML = `<div><h1>Commands</h1><div class="commandsWindow" ">`
-
+    let commandsHTML = `<div><h1>Commands</h1><div class="commandsWindow">` //style="height:${(commandList.length * 44)+10}px;
+    
     for (let i = 0; i < commandList.length; i++) {
-        commandsHTML += `<button id="${commandList[i]}" class="codeButtonDefault" onclick="moveCommandToProgram(${commandList[i]})">${model.game.commands[i].name}</button>`
+        commandsHTML += /*HTML*/`
+            <button id="${commandList[i]}" class="codeButtonDefault" onclick="moveCommandToProgram(${commandList[i]})">${model.game.commands[i].name}</button>      
+        `
     }
     commandsHTML += `</div></div>`
     return commandsHTML;
@@ -136,9 +139,14 @@ function generateLevelsWindow() {
             <div class="levelsWindow">
             <button class="${currentLevel != 0 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(1)">1</button>
             <button class="${currentLevel != 1 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(2)">2</button>
-            <button class="${currentLevel != 2 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(3)"> 3</button>
+            <button class="${currentLevel != 2 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(3)">3</button>
             <button class="${currentLevel != 3 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(4)">4</button>
-            <button class="${currentLevel != 4 ? "levelButton random" : "levelButtonDisabled"}" onclick="changeLevel(5)">Random</button>
+            <button class="${currentLevel != 4 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(5)">5</button>
+            <button class="${currentLevel != 5 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(1)">6</button>
+            <button class="${currentLevel != 6 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(2)">7</button>
+            <button class="${currentLevel != 7 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(3)">8</button>
+            <button class="${currentLevel != 8 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(4)">9</button>
+            <button class="${currentLevel != 9 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(5)">10</button>
         </div></div>
     `;
     return levelHTML;
@@ -149,12 +157,15 @@ function generateOverlayWindow(){
    let overlayHTML = /*HTML*/
    `
    <div class="overlayWindow" onclick="disableOverlay()">
-    <h2 class="overlayHeader">Title</h2>
+    <h2 class="overlayHeader">Velkommen til GET Academy!</h2>
+    <img src="img/rookieHIGH14.png" width="128px">
     <p class="storyText">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+    <img src="img/terjeMedHatt.png">
+     Hei, Rookie! Etter 10 uker i programmet vårt vil du kunne lage dette spillet og mer! Kun fantasien setter grenser.
+    Uten mål og mening vil du nok ikke finne frem. Ta dine første steg!
     </p>
 
-    <p class="clickToCloseText"> >Click to close< </p>
+    <button class="startButton">Start!</button>
     
    </div>
     `;
