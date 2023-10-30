@@ -65,6 +65,7 @@ let model = {
             {
                 id: 0,
                 boardTask:"Ta de første stegene mot mål..",
+                overlayStory:"",
                 characterStartIndex: 23,
                 finishIndex: 25,
                 inventory: [],
@@ -119,7 +120,7 @@ let model = {
             "img/tiles/grass.png", "img/tiles/grass_2.png",
             "img/tiles/grass_3.png", "img/tiles/grass_4.png", 
             "img/tiles/field-of-roses.png", "img/tiles/Field_of_Daisy.png",
-            "img/tiles/Field_Of_Colours2.png", "img/tiles/Field_of_Orchid2.png",
+            "img/tiles/Field_Of_Colours2.png", "img/tiles/field_of_Orchid2.png",
             //"img/tiles/Field_Of_Colours.png", "img/tiles/Field_Of_Orchid.png", 
         ],
         pathwayImages: {
