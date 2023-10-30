@@ -14,6 +14,9 @@ h1,h2,h3{
 
    
 }
+img{
+    image-rendering: pixelated;
+}
 p{
     font-family: 'Lato', sans-serif;
     color: #000000;
@@ -37,7 +40,7 @@ button:disabled{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 60vw;
+    width: 65vw;
     height: 75vh;
     position: absolute;
     z-index: 3;

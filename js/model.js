@@ -118,8 +118,8 @@ let model = {
             "img/tiles/grass_3.png", "img/tiles/grass_4.png", 
             "img/tiles/grass.png", "img/tiles/grass_2.png",
             "img/tiles/grass_3.png", "img/tiles/grass_4.png", 
-            "img/tiles/field-of-roses.png", "img/tiles/Field_Of_Daisy.png",
-            "img/tiles/Field_Of_Colours2.png", "img/tiles/Field_Of_Orchid2.png",
+            "img/tiles/field-of-roses.png", "img/tiles/Field_of_Daisy.png",
+            "img/tiles/Field_Of_Colours2.png", "img/tiles/Field_of_Orchid2.png",
             //"img/tiles/Field_Of_Colours.png", "img/tiles/Field_Of_Orchid.png", 
         ],
         pathwayImages: {
