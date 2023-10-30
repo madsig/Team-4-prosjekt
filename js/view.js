@@ -157,13 +157,14 @@ function generateOverlayWindow(){
    let overlayHTML = /*HTML*/
    `
    <div class="overlayWindow" onclick="disableOverlay()">
-    <h2 class="overlayHeader">Velkommen til GET Academy!</h2>
+    <h2 class="overlayHeader">${model.game.runtime.board.overlayTitle}</h2>
     <img src="img/rookieHIGH14.png" width="128px">
-    <p class="storyText">
-    <img src="img/terjeMedHatt.png">
-     Hei, Rookie! Etter 10 uker i programmet vårt vil du kunne lage dette spillet og mer! Kun fantasien setter grenser.
-    Uten mål og mening vil du nok ikke finne frem. Ta dine første steg!
+    <div class="storyText">
+    <img src="img/terjeMedHatt.png" width="64px">
+    <p>
+     ${model.game.runtime.board.overlayStory}
     </p>
+    </div>
 
     <button class="startButton">Start!</button>
     

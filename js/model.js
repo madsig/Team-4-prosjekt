@@ -65,7 +65,8 @@ let model = {
             {
                 id: 0,
                 boardTask:"Ta de første stegene mot mål..",
-                overlayStory:"",
+                overlayTitle: "Velkommen til GET Academy!",
+                overlayStory:"Hei, Rookie! Etter 10 uker i programmet vårt vil du kunne lage dette spillet og mer! Kun fantasien setter grenser. Uten mål og mening vil du nok ikke finne frem. Ta dine første steg!",
                 characterStartIndex: 23,
                 finishIndex: 25,
                 inventory: [],

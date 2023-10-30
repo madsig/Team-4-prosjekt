@@ -20,7 +20,7 @@ img{
 p{
     font-family: 'Lato', sans-serif;
     color: #000000;
-    font-size: 18pt;
+    font-size: 16pt;
     font-weight: 600;
 }
 
@@ -48,8 +48,10 @@ button:disabled{
     
 }
 .overlayWindow>.storyText{
-    margin-left: 15%;
-    margin-right: 15%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5%;
+    margin-right: 5%;
     text-align: top;
 }
 .overlayWindow>.overlayHeader{
