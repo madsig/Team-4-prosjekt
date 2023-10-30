@@ -58,7 +58,7 @@ function stepThroughList() {
     let marginCounter = 0; // 0
     let currentCommand = model.game.runtime.program.commands[stepCounter]
     staggerFrames = 3; // 3 - Default during movement, so the animation has time to run in the pause between changes.
-
+    
 
     let interval = setInterval(() => {
         if (model.game.runtime.program.commands.length <= stepCounter) {
@@ -84,7 +84,7 @@ function stepThroughList() {
         }else if(currentCommand.commandId == 3){
             pickUpItem(model.game.runtime.player.index)
             marginCounter = 100;
-            staggerFrames = 14;
+            staggerFrames = 6;
         }else if(currentCommand.commandId == 4){
             useItem()
             marginCounter = 100;
@@ -95,9 +95,9 @@ function stepThroughList() {
         //Moving things
         if (marginCounter < 100) {
             console.log("%cRunning inner interval", 'color: green; font-size: 12px;')
+            marginCounter += 25; // How far the character moves pr update.
             if(currentCommand.commandId == 0){
                 staggerFrames = 3;
-                marginCounter += 25; // How far the character moves pr update.
                 if (player.direction == 0) {//Facing North
                     model.game.runtime.player.marginTop = -marginCounter
                     playerState = 'walkUp';            
@@ -111,13 +111,17 @@ function stepThroughList() {
                     model.game.runtime.player.marginLeft = -marginCounter
                     playerState = 'walkLeft';
                 }
+            
             }
 
-        } else {
+        }else {
             console.log("%cRunning outer interval", 'color: red; font-size: 12px;')
             model.game.runtime.program.commands[stepCounter].isSuccess = true;
             if(currentCommand.commandId == 0)
                 moveForward(stepCounter)
+            if(currentCommand.commandId == 3){
+                pickUpItem();
+            }
             model.game.runtime.player.marginTop = 0;
             model.game.runtime.player.marginLeft = 0;
             stepCounter++;
@@ -129,6 +133,7 @@ function stepThroughList() {
 }
 
 function pickUpItem(index) {
+    playerState = 'pickUp';
     const boardInv = model.game.runtime.board.inventory;
     console.log(`player inventory: ${model.game.runtime.player.inventory}`)
     if (model.game.runtime.player.inventory != null) {
@@ -160,6 +165,7 @@ function useItem() {
 }
 function resetItems() {
     const currentBoard = model.game.levels[model.game.runtime.currentLevel].boardId;
+    console.log(currentBoard)
     model.game.runtime.board.inventory = JSON.parse(JSON.stringify(model.game.boards[currentBoard].inventory));
     model.game.runtime.player.inventory = null;
 }
@@ -192,13 +198,17 @@ function turnLeft() {
 
 
 function changeLevel(level) {
-    if (confirm("Forlat levelet?")) {
+    // if (confirm("Forlat levelet?")) {
         let levelId = level - 1; //level 1 = index 0
         model.game.runtime.currentLevel = levelId;
+    
+        model.app.showOverlay = true;
+        model.game.runtime.currentLevelStatus = null;
+        setAnimationDirect(levelId)
         resetProgramList()
         initializeLevel();
         updateView();
-    }
+    // }
 }
 
 function toggleTestMode() {
@@ -219,5 +229,21 @@ function checkWinLoss() {
     if (model.game.runtime.player.index === model.game.runtime.board.finishIndex) {
         //win()
         console.log("win")
+        model.game.runtime.currentLevelStatus = true;
+        updateView()
+    }
+}
+function setAnimationDirect(levelId) {
+    if(model.game.boards[levelId].startDirection == 1){
+        playerState = 'rightIdle'
+    }
+    if(model.game.boards[levelId].startDirection == 2){
+        playerState = 'idle'
+    }
+    if(model.game.boards[levelId].startDirection == 0){
+        playerState = 'upIdle'
+    }
+    if(model.game.boards[levelId].startDirection == 3){
+        playerState = 'leftIdle'
     }
 }

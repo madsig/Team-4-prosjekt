@@ -4,7 +4,7 @@
 function updateView() {
     document.getElementById('app').innerHTML = /*HTML*/ `
         ${model.app.showOverlay ? generateOverlayWindow() : ''}
-        <div><div style="display:flex;"><img src="img/eskil.png" style="margin-top:0%"><h1 style="margin-top:5%;">${model.game.boards[model.game.runtime.currentLevel].boardTask}</h1></div><div class="gameWindow">${generateGameWindow()}</div></div>
+        <div><div style="display:flex;"><img src="${model.game.runtime.board.boardFace}" style="margin-top:0%"><h1 style="margin-top:5%;">${model.game.boards[model.game.runtime.currentLevel].boardTask}</h1></div><div class="gameWindow">${generateGameWindow()}</div></div>
         ${generateProgramWindow()}
         ${generateCommandsWindow()}
         ${generateLevelsWindow()}
@@ -78,7 +78,6 @@ function getBackgroundImage(index) {
     game.runtime.board.backgroundImagesCache.push(image);
     return image;
 }
-
 function getItems(index) {
     const runtime = model.game.runtime;
     const inventory = runtime.board.inventory
@@ -97,7 +96,8 @@ function getItems(index) {
 
 function generateProgramWindow() {
     let programList = [...model.game.runtime.program.commands];
-    let programHTML = `<div><h1>Program</h1><div class="programWindow"">` // style="height:${(programList.length * 44) + 60}px;
+    let nextLevel = model.game.runtime.currentLevel + 2;
+    let programHTML = `<div><h1>Program</h1><div class="programWindow">` // style="height:${(programList.length * 44) + 60}px;
     let btnText = "";
     for (let i = 0; i < programList.length; i++) {
         btnText = model.game.commands[programList[i].commandId]
@@ -107,12 +107,18 @@ function generateProgramWindow() {
         onclick="removeCommandFromProgram(${i})"
         >${programList[i].isSuccess ? btnText.jsName : btnText.name}</button>`
     }
-    programHTML += /*HTML*/`
+
+    if(model.game.runtime.currentLevelStatus){
+        programHTML += /*HTML*/`
         <div class="programControlButtons">
-            <button ${model.game.runtime.program.commands.length == 0 ? "disabled":""} class="resetButton" onclick="resetProgramList()">↺</button>
-            <div class="gapDiv"></div>
-            <button ${model.game.runtime.program.commands.length == 0 ? "disabled":""} class="runProgramButton" onclick="runProgram()">⏵</button>
+        <button class="continueButton" onclick="changeLevel(${nextLevel})">Next level</button>
         </div></div></div>`
+    }else{
+    programHTML += /*HTML*/`
+    <div class="programControlButtons">
+            <button ${model.game.runtime.program.commands.length == 0 ? "disabled":""} class="resetButton" onclick="resetProgramList()">↺</button>
+            <button ${model.game.runtime.program.commands.length == 0 ? "disabled":""} class="runProgramButton" onclick="runProgram()">⏵</button>
+        </div></div></div>`}
     return programHTML;
 }
 
@@ -142,11 +148,11 @@ function generateLevelsWindow() {
             <button class="${currentLevel != 2 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(3)">3</button>
             <button class="${currentLevel != 3 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(4)">4</button>
             <button class="${currentLevel != 4 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(5)">5</button>
-            <button class="${currentLevel != 5 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(1)">6</button>
-            <button class="${currentLevel != 6 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(2)">7</button>
-            <button class="${currentLevel != 7 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(3)">8</button>
-            <button class="${currentLevel != 8 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(4)">9</button>
-            <button class="${currentLevel != 9 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(5)">10</button>
+            <button class="${currentLevel != 5 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(6)">6</button>
+            <button class="${currentLevel != 6 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(7)">7</button>
+            <button class="${currentLevel != 7 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(8)">8</button>
+            <button class="${currentLevel != 8 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(9)">9</button>
+            <button class="${currentLevel != 9 ? "levelButton" : "levelButtonDisabled"}" onclick="changeLevel(10)">10</button>
         </div></div>
     `;
     return levelHTML;
@@ -156,25 +162,24 @@ function generateLevelsWindow() {
 function generateOverlayWindow(){
    let overlayHTML = /*HTML*/
    `
-   <div class="overlayWindow" onclick="disableOverlay()">
+   <div class="overlayWindow">
     <h2 class="overlayHeader">${model.game.runtime.board.overlayTitle}</h2>
     <img src="img/rookieHIGH14.png" width="128px">
     <div class="storyText">
-    <img src="img/terjeMedHatt.png" width="64px">
+    <img src="${model.game.runtime.board.overlayFace}" width="96px" height="96px">
     <p>
      ${model.game.runtime.board.overlayStory}
     </p>
     </div>
-
-    <button class="startButton">Start!</button>
+    <button onclick="toggleOverlay()" class="startButton">Start!</button>
     
    </div>
     `;
    return overlayHTML;
 }
 
-function disableOverlay(){
-    model.app.showOverlay = false;
+function toggleOverlay(){
+    model.app.showOverlay = !model.app.showOverlay;
     updateView()
 }
 

@@ -134,19 +134,19 @@ button:disabled{
 .programWindow {
     margin-left: 2%;
     margin-right: 4%;
-    /* min-height: 60px; */
     display: flex;
     flex-direction: column;
     grid-area: 'program';
-    /* border: solid rgb(251, 178, 70) 2px; */
-    /* border-radius: 10px; */
+    justify-content: top; 
+    align-items: center; 
+    /* border: solid rgb(251, 178, 70) 2px; 
+    /border-radius: 10px;*/
     min-height: 448px;
-    justify-content: top;
-    align-items: center;
     
     background-color: #ffffff; 
     overflow: auto;
 }
+
 
 .commandsWindow {
     display: flex;
@@ -222,11 +222,15 @@ button:disabled{
 }
 /* The color when the codeButtons are in the program list */
 .codeButtonProgram{
+    justify-self: center;
     width: 60%;
     height: 40px;
     margin: 1.2%;
     background-color: #eeeeee;
     border: none;
+    display: flex;
+    justify-content: space-around; /* Adjust as needed */
+    align-items: center;
     /* border-color: #ffffff; */
     /* border-radius: 10px;     */
 }
@@ -282,6 +286,7 @@ button:disabled{
     width: 20px;
 }
 .resetButton{
+    grid-area: reset;
     height: 50px;
     width: 80px;
     background-color: rgb(255, 83, 31);
@@ -292,6 +297,7 @@ button:disabled{
     text-align: center;
 }
 .runProgramButton{
+    grid-area: start;
     height: 50px;
     width: 80px;
     background-color: #21EACC;

@@ -14,13 +14,23 @@ Pre-Level 1 - Overlay med Intro/story, en Hook, hva skal spilleren gjøre.
 2 > 3 
 3 > 4 bilde med 404
 
-Program>Kommandoer
-Grønn ramme rundt kommandoer som holder på å kjøre? 
 
-Overlay, med bilder av karakterene
+
+Ida:
+Grønn ramme rundt kommandoer som holder på å kjøre? 
+Overlay, med bilder av karakterene. Ok? eller mer?
+
+
 Designe level 3-10
-***Når spilleren er i mål, og programmet er ferdig, legg inn knapp som går til neste level.
-***Legge story til Board objektet.
+***Legge story til Board objektene.
+Bilde av mål
+Bilde med ramme - Inventory
+
+Enten Eller: 
+    Nå mål.
+    Plukk opp en ting og nå mål.
+    Plukk opp en ting og bruk den et sted.
+    Plukk opp en ting og bruk den et sted og så nå mål.
 
 
 
@@ -37,6 +47,7 @@ Datamaskin -    ??              - ??
 Eskil -         Tryne           - Jeg finner ikke unmute knappen?!
 Terje -         Tryne           - Kan du finne Eskil? Chorei starter om 2 minutt!
 unMute knapp -  ??              - Hei alle sammen! Vi gjør alle feil, feiling er læring. Da starter vi dagen med chorei!
+
 
 
 1 - Story

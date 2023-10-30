@@ -1,7 +1,8 @@
  //document.addEventListener('DOMContentLoaded', function(){
 let playerState = 'idle';
 let staggerFrames = 14;
- window.addEventListener('load', function() {
+
+window.addEventListener('load', function() {
     getCanvas();
 });
 function getCanvas() {
