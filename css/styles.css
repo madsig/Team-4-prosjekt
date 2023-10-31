@@ -23,6 +23,10 @@ p{
     font-size: 16pt;
     font-weight: 600;
 }
+.victoryImage{
+    position: absolute;
+    z-index: 4;
+}
 
 button{
     font-family: 'Lato', sans-serif;
