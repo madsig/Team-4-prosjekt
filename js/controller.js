@@ -35,6 +35,7 @@ function resetPlayerPosition() {
     model.game.runtime.player.direction = model.game.runtime.board.startDirection;
     model.game.runtime.player.marginLeft = 0;
     model.game.runtime.player.marginTop = 0;
+    setAnimationDirection()
 }
 
 function runProgram() {
@@ -204,7 +205,7 @@ function changeLevel(level) {
     
         model.app.showOverlay = true;
         model.game.runtime.currentLevelStatus = null;
-        setAnimationDirect(levelId)
+        setAnimationDirection()
         resetProgramList()
         initializeLevel();
         updateView();
@@ -233,17 +234,18 @@ function checkWinLoss() {
         updateView()
     }
 }
-function setAnimationDirect(levelId) {
-    if(model.game.boards[levelId].startDirection == 1){
+function setAnimationDirection() {
+    level = model.game.runtime.currentLevel
+    if(model.game.boards[level].startDirection == 1){
         playerState = 'rightIdle'
     }
-    if(model.game.boards[levelId].startDirection == 2){
+    if(model.game.boards[level].startDirection == 2){
         playerState = 'idle'
     }
-    if(model.game.boards[levelId].startDirection == 0){
+    if(model.game.boards[level].startDirection == 0){
         playerState = 'upIdle'
     }
-    if(model.game.boards[levelId].startDirection == 3){
+    if(model.game.boards[level].startDirection == 3){
         playerState = 'leftIdle'
     }
 }

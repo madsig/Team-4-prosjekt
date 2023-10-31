@@ -1,5 +1,5 @@
  //document.addEventListener('DOMContentLoaded', function(){
-let playerState = 'idle';
+let playerState = 'rightIdle';
 let staggerFrames = 14;
 
 window.addEventListener('load', function() {

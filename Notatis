@@ -20,11 +20,20 @@ Ida:
 Grønn ramme rundt kommandoer som holder på å kjøre? 
 Overlay, med bilder av karakterene. Ok? eller mer?
 
+Programmering?
+Noen form for "Celebration" når man når mål.
+-Endre teksten over spill-brettet
+-Animasjon, evt med flagg. (for stort?)
+-Overlay over spillbrettet, transparent, med "Victory!" e.l
+
 
 Designe level 3-10
 ***Legge story til Board objektene.
-Bilde av mål
+Bilde av mål man kun skal nå
+Bilde av mål man skal bruke noe på
 Bilde med ramme - Inventory
+Bilde med Victory!
+
 
 Enten Eller: 
     Nå mål.

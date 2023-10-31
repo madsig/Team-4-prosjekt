@@ -10,13 +10,17 @@ h1,h2,h3{
     margin-top: 8%;
     margin-bottom: 0.4em;
     text-align: left;
-    font-size: 18pt;
-
-   
+    font-size: 18pt;   
 }
 img{
     image-rendering: pixelated;
 }
+
+.victoryImage{
+    position: absolute;
+    z-index: 4;
+}
+
 p{
     font-family: 'Lato', sans-serif;
     color: #000000;
@@ -276,12 +280,11 @@ button:disabled{
 }
 .continueButton{ /*blir ikke bruktt tror jeg?*/
     height: 50px;
-    width: 150px;
+    width: 98%;
     background-color: #21EACC;
     border: none;
     /* border-color: green; */
     /* border-radius: 10px; */
-    color: white;
     font-size: 21pt;
     text-align: center;
     padding-bottom: 2%;
