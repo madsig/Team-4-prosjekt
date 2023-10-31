@@ -18,6 +18,7 @@ let model = {
     },
 
     game: {
+        
         runtime: {
             currentLevel: 0,
             currentLevelStatus: null, //false= level failed, true= level complete, null= not yet attempted.
@@ -74,7 +75,7 @@ let model = {
                 boardFace: "img/terjeMedHatt.png",
                 boardTask:"Ta de første stegene mot mål..",
                 overlayTitle: "Velkommen til GET Academy!",
-                overlayFace: "img/terjeMedHatt.png",
+                overlayFace: "img/terjeMedHatt.gif",
                 overlayStory:`Hei, Rookie! Etter 20 uker i programmet vårt vil du kunne lage dette spillet og MYE mer!<br>
                     Kun fantasien setter grenser, men uten mål og mening vil du nok ikke finne frem... Ta dine første steg idag!`,
                 characterStartIndex: 23,
@@ -89,7 +90,7 @@ let model = {
                 boardTask:"Ut mot høyre",
                 boardFace: "img/terjeMedHatt.png",
                 overlayTitle: "Det SVINGER seg..",
-                overlayFace: "img/terjeMedHatt.png",
+                overlayFace: "img/terjeMedHatt.gif",
                 overlayStory:"Med litt input fra kodelærere vil reisen bli enda lettere.",
                 characterStartIndex: 16,
                 finishIndex: 32,
@@ -104,7 +105,7 @@ let model = {
                 boardTask:"En runde med Loops",
                 boardFace: "img/terjeMedHatt.png",
                 overlayTitle: "Would you kindly..",
-                overlayFace: "img/terjeMedHatt.png",
+                overlayFace: "img/terjeMedHatt.gif",
                 overlayStory:"Jeg har det litt travelt, må dra til GetAcademy, møt meg der! Plukk opp loopen der er du snill.",
                 characterStartIndex: 37,
                 finishIndex: 18,
@@ -122,7 +123,7 @@ let model = {
                 boardTask:"???",
                 boardFace: "img/terjeMedHatt.png",
                 overlayTitle: "Hyper-Loop",
-                overlayFace: "img/terjeMedHatt.png",
+                overlayFace: "img/terjeMedHatt.gif",
                 overlayStory:"En infinite loop!! Da går det galt. Jeg må avgårde! Kan du finne Eskil? Morgenmøte starter om 2 minutter!",
                 characterStartIndex: 8,
                 finishIndex: 32,
@@ -138,7 +139,7 @@ let model = {
                 boardTask:"???",
                 boardFace: "img/eskil.png",
                 overlayTitle: "Hyper-Loop",
-                overlayFace: "img/eskil.png",
+                overlayFace: "img/eskil.gif",
                 overlayStory:"Jeg finner ikke unMute knappen?! Kan du hjelpe meg?",
                 characterStartIndex: 32,
                 finishIndex: 30,
@@ -154,7 +155,7 @@ let model = {
                 boardTask:"???",
                 boardFace: "img/eskil.png",
                 overlayTitle: "Hyper-Loop",
-                overlayFace: "img/eskil.png",
+                overlayFace: "img/eskil.gif",
                 overlayStory:"Har du det du trenger til skolen? En datamaskin med litt kraft kan være greit å ha!",
                 characterStartIndex: 30,
                 finishIndex: 20,
@@ -170,7 +171,7 @@ let model = {
                 boardTask:"???",
                 boardFace: "img/eskil.png",
                 overlayTitle: "Hyper-Loop",
-                overlayFace: "img/eskil.png",
+                overlayFace: "img/eskil.gif",
                 overlayStory:"En mikrofon trenger du også! Kommunikasjon er key hos oss!",
                 characterStartIndex: 20,
                 finishIndex: 9,
@@ -186,7 +187,7 @@ let model = {
                 boardTask:"???",
                 boardFace: "img/eskil.png",
                 overlayTitle: "Hyper-Loop",
-                overlayFace: "img/eskil.png",
+                overlayFace: "img/eskil.gif",
                 overlayStory:"Jeg finner ikke unMute knappen?! Kan du hjelpe meg?",
                 characterStartIndex: 0,
                 finishIndex: 48,
@@ -252,11 +253,34 @@ let model = {
         },
         inventoryImage: "img/borderImg.png",
         playerImage: "img/rookiefront1.png", //burde være array eller objekt for å få rettning, kommer ann på canvas
-        flagImage: "img/flag.png",
+        flagImage: "img/building.png",
         itemImages: [
             { yellowKeyIcon: "img/yellowkey.png" },
             { yellowDoor: "img/yellowdoor.png" },
         ],
+        
+        victoryQuotes: [
+            "Gratulerer, du klarte det!",
+            "Du nådde målet!",
+            "Vel gjennomført!",
+            "Du fikk det til!",
+            "Fantastisk, du kom i mål!",
+            "Bra jobba, du fullførte det!",
+            "Mål oppnådd, gratulerer!",
+            "Du er i mål, godt jobbet!",
+            "Mission accomplished!",
+            "Knallbra, du nådde målet!",
+            "Strålende, du kom i mål!",
+            "Skikkelig bra, du er i mål!",
+            "Du har nådd målet, bra jobbet!",
+            "Fantastisk!",
+            "Nice! Du nådde endelig målet!",
+            "Gjennomført det med stil",
+            "Du er i mål, og det er strålende!",
+            "Du gjorde det! Målet er oppnådd!",
+            "Du er en vinner! Målet er nådd!",
+            "Gratulerer, du har nådd toppen!",
+        ]
     },
 
     debug: {

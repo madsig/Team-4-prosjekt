@@ -4,7 +4,7 @@
 function updateView() {
     document.getElementById('app').innerHTML = /*HTML*/ `
         ${model.app.showOverlay ? generateOverlayWindow() : ''}
-        <div><div style="display:flex;"><img src="${model.game.runtime.board.boardFace}" style="margin-top:0%"><h1 style="margin-top:5%;">${model.game.boards[model.game.runtime.currentLevel].boardTask}</h1></div><div class="gameWindow">${generateGameWindow()}</div></div>
+        <div>${generateTopImageAndText()}<div class="gameWindow">${generateGameWindow()}${showVictoryOverlay()}</div></div>
         ${generateProgramWindow()}
         ${generateCommandsWindow()}
         ${generateLevelsWindow()}
@@ -12,6 +12,18 @@ function updateView() {
     getCanvas()
 }
 
+function showVictoryOverlay(){
+    return model.game.runtime.currentLevelStatus ? `<div class="victoryImage"><img src="img/victory.png"></div>`:"";
+}
+function generateTopImageAndText(){
+    // <h1>${model.game.boards[model.game.runtime.currentLevel].boardTask}</h1>
+ let topHTML = `
+    <div class="topImageAndText">
+    <img src="${model.game.runtime.board.boardFace}">
+    <h1>${model.game.runtime.board.boardTask}</h1>
+    </div>`
+    return topHTML;
+}
 function initializeLevel() {
     model.game.runtime.board = JSON.parse(JSON.stringify(model.game.boards[model.game.runtime.currentLevel]));
     model.game.runtime.player.direction = model.game.runtime.board.startDirection;
@@ -38,7 +50,7 @@ function generateGameWindow() {
         gameWindowHtml += /*HTML*/ `
             <div class="gridBlock" style="background-image: url(${backgroundImage})">
                 <div class="gridNumber">${model.app.isTesting ? i:""}</div>
-                <div class="gridImage"><img src="${flag} ${getItems(i)}"> ${player}</div>
+                <div class="gridImage"><img src="${flag} ${getItems(i)}" width="64"> ${player}</div>
             </div>
         `;
     }

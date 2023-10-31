@@ -47,6 +47,10 @@ function getCanvas() {
             frames: 14,
         },
         {
+            name: 'victoryPose',
+            frames: 14,
+        },
+        {
             name: 'walkDown',
             frames: 7,
         },

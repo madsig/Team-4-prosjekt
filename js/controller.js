@@ -229,8 +229,10 @@ function checkWinLoss() {
     }
     if (model.game.runtime.player.index === model.game.runtime.board.finishIndex) {
         //win()
+        playerState = 'victoryPose';
         console.log("win")
         model.game.runtime.currentLevelStatus = true;
+        model.game.runtime.board.boardTask = model.game.victoryQuotes[RNG(model.game.victoryQuotes.length)];
         updateView()
     }
 }
