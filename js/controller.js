@@ -74,7 +74,6 @@ function stepThroughList() {
     let currentCommand = model.game.runtime.program.commands[stepCounter]
     staggerFrames = 3; // 3 - Default during movement, so the animation has time to run in the pause between changes.
     
-
     let interval = setInterval(() => {
 
         if (model.game.runtime.program.commands.length <= stepCounter || model.game.runtime.isPlayerOffTrack) {
@@ -220,21 +219,19 @@ function turnLeft() {
 
 
 function changeLevel(level) {
-    // if (confirm("Forlat levelet?")) {
-        let levelId = level - 1; //level 1 = index 0
-        model.app.showOverlay = true;
-        if(levelId < 10){
-            model.game.runtime.currentLevel = levelId;
-            model.game.runtime.currentLevelStatus = null;
-            setAnimationDirection()
-            resetProgramList()
-            initializeLevel();
-        }else{
-            model.game.hasGameEnded = true;
-        }
+    let levelId = level - 1; //level 1 = index 0
+    model.app.showOverlay = true;
+    if(levelId < 10){
+        model.game.runtime.currentLevel = levelId;
+        model.game.runtime.currentLevelStatus = null;
+        setAnimationDirection()
+        resetProgramList()
+        initializeLevel();
+    }else{
+        model.game.hasGameEnded = true;
+    }
 
-        updateView();
-    // }
+    updateView();
 }
 
 function toggleTestMode() {
@@ -250,8 +247,6 @@ function RNG(max) {
 
 function checkWinLoss() {
     if (!model.game.runtime.board.paths.includes(model.game.runtime.player.index)) {
-        //loose()
-        
         console.log("loose")
     }
     if (model.game.runtime.player.index === model.game.runtime.board.finishIndex) {
