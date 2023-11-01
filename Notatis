@@ -20,19 +20,22 @@ Ida:
 Grønn ramme rundt kommandoer som holder på å kjøre? 
 Overlay, med bilder av karakterene. Ok? eller mer?
 
+
 Programmering?
-Noen form for "Celebration" når man når mål.
-**Endre teksten over spill-brettet
-**-**Animasjon, evt med flagg. (for stort?)
-***Overlay over spillbrettet, transparent, med "Victory!" e.l
+*** Noen form for "Celebration" når man når mål.
+*** Endre teksten over spill-brettet
+*** Animasjon, evt med flagg. (for stort?)
+*** Overlay over spillbrettet, transparent, med "Victory!" e.l
 
 
-Designe level 8-10
-***Legge story til Board objektene.
-***Bilde av mål man kun skal nå
+Legge ting på lvl 8-9-10
+Story til lvl 8-9-10
 Bilde av mål man skal bruke noe på
-***Bilde med ramme - Inventory
-***Bilde med Victory!
+Bilde med ramme - Inventory
+
+*** Begrense bevegelse til paths
+
+
 
 
 Enten Eller: 
@@ -46,7 +49,7 @@ Enten Eller:
 Trenger:
 1. Høyoppløselig bilde av karakter til Overlay
 2. Bilder av ting
-3. Story ferdig skrevet og fordelt på 4 lvls
+3. Story ferdig skrevet og fordelt på 10 lvls
 
 
 Items (.png)
@@ -76,10 +79,10 @@ Datamaskin, en maskin med litt kraft kan være greit å ha.
 Headsett & mikrofon er essensielt for å sikre god kommunikasjon med laget ditt.
 
 
+
+
 "Kjekt å ha":
 - Kanskje en kort quiz? type, Kahoot, med 1 spørsmål?
-- Story dekker spillbrettet, program og commands(om det blir for lite med spillbrettet)
-- Trykke på 1 knapp, og så på en tom
 - Mobilversjon
 
 

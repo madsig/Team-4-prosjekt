@@ -18,8 +18,9 @@ let model = {
     },
 
     game: {
-        
+        hasGameEnded: false,
         runtime: {
+            isPlayerOffTrack: false,
             currentLevel: 0,
             currentLevelStatus: null, //false= level failed, true= level complete, null= not yet attempted.
             player: {
@@ -77,11 +78,12 @@ let model = {
                 overlayTitle: "Velkommen til GET Academy!",
                 overlayFace: "img/terjeMedHatt.gif",
                 overlayStory:`Hei, Rookie! Etter 20 uker i programmet vårt vil du kunne lage dette spillet og MYE mer!<br>
-                    Kun fantasien setter grenser, men uten mål og mening vil du nok ikke finne frem... Ta dine første steg idag!`,
+                    Kun fantasien setter grenser, men uten mål og mening vil du nok ikke finne frem... <br><br>
+                    Ta dine første steg på stien idag, men pass på! Gresset er fullt av slanger og flått!`,
                 characterStartIndex: 23,
                 finishIndex: 25,
                 inventory: [],
-                objectives: [], //the id, name, index, icon, and objectUsed, of a Door, terminal, etc. Same ID as corresponding item.
+                objectives: {}, //the id, name, index, icon, and objectUsed, of a Door, terminal, etc. Same ID as corresponding item.
                 paths: [23, 24, 25],
                 startDirection: 1,
             },
@@ -95,7 +97,7 @@ let model = {
                 characterStartIndex: 16,
                 finishIndex: 32,
                 inventory: [],
-                objectives: [],
+                objectives: {},
                 paths: [16, 23, 30, 31, 32,],
                 startDirection: 2,
 
@@ -110,11 +112,10 @@ let model = {
                 characterStartIndex: 37,
                 finishIndex: 18,
                 inventory: [
-                    { id: 0, name: 'loop', indexOnBoard: 24, iconUrl: 'img/infiniteloop.png', pickedUp: false, },
+                    { id: 0, name: 'loop', indexOnBoard: 24, iconUrl: 'img/loopShiny.gif', pickedUp: false, },
                 ],
-                objectives: [
-                    {id:0, name: 'kake dør', indexOnBoard: 14, iconUrl: 'img/cakeDoor.png', isOpened: false},
-                ],
+                objectives:{id:0, name: 'terminal', indexOnBoard: 17, iconUrl: 'img/terminal.gif', isOpened: false},
+                
                 paths: [37, 38, 31, 24, 17, 18],//[39,40,33,26,19,18,11,10,9,16,15,22,29,36,37],
                 startDirection: 1,
             },
@@ -126,12 +127,13 @@ let model = {
                 overlayFace: "img/terjeMedHatt.gif",
                 overlayStory:"En infinite loop!! Da går det galt. Jeg må avgårde! Kan du finne Eskil? Morgenmøte starter om 2 minutter!",
                 characterStartIndex: 8,
-                finishIndex: 32,
+                finishIndex: 26,
                 inventory: [
-                    { id: 0, name: 'eskil', indexOnBoard: 23, iconUrl: 'img/eskil.png', pickedUp: false, }
+                    { id: 0, name: 'eskil', indexOnBoard: 30, iconUrl: 'img/eskilShiny.gif', pickedUp: false, }
                 ],
+                objectives: {},
                 //test
-                paths: [8, 15, 22, 29, 30, 23, 24, 31, 32], // [8, 15, 22, 29, 30, 23, 24, 31, 32]
+                paths: [8, 15, 22, 29, 30, 31, 24, 25, 26], // [8, 15, 22, 29, 30, 23, 24, 31, 32]
                 startDirection: 2,
             },
             {
@@ -144,8 +146,9 @@ let model = {
                 characterStartIndex: 32,
                 finishIndex: 30,
                 inventory: [
-                    { id: 0, name: 'unMute', indexOnBoard: 16, iconUrl: 'img/microphonemuted.png', pickedUp: false, }
+                    { id: 0, name: 'unMute', indexOnBoard: 16, iconUrl: 'img/microShiny.gif', pickedUp: false, }
                 ],
+                objectives: {},
                 //test
                 paths: [32, 25, 18, 17, 16, 15, 22, 29, 30], // 32, 25,, 18, 17, 16, 15, 23, 30, 29
                 startDirection: 0,
@@ -160,8 +163,9 @@ let model = {
                 characterStartIndex: 30,
                 finishIndex: 20,
                 inventory: [
-                    { id: 0, name: 'maskin', indexOnBoard: 31, iconUrl: 'img/computer.png', pickedUp: false, }
+                    { id: 0, name: 'maskin', indexOnBoard: 31, iconUrl: 'img/computerShiny.gif', pickedUp: false, }
                 ],
+                objectives: {},
                 //test
                 paths: [30, 31, 32, 25, 18, 19, 20], // 30, 31, 32, 25, 18, 19, 20
                 startDirection: 1,
@@ -176,8 +180,9 @@ let model = {
                 characterStartIndex: 20,
                 finishIndex: 9,
                 inventory: [
-                    { id: 0, name: 'mikrofon', indexOnBoard: 10, iconUrl: 'img/microphone.png', pickedUp: false, }
+                    { id: 0, name: 'mikrofon', indexOnBoard: 10, iconUrl: 'img/microShiny2.gif', pickedUp: false, }
                 ],
+                objectives: {},
                 //test
                 paths: [20, 27, 26, 25, 24, 17, 10, 9], // 20, 27, 26, 25, 24, 17, 10, 9
                 startDirection: 2,
@@ -189,12 +194,13 @@ let model = {
                 overlayTitle: "Hyper-Loop",
                 overlayFace: "img/eskil.gif",
                 overlayStory:"Jeg finner ikke unMute knappen?! Kan du hjelpe meg?",
-                characterStartIndex: 0,
-                finishIndex: 48,
+                characterStartIndex: 19,
+                finishIndex: 38,
                 inventory: [],
+                objectives: {},
                 //test
-                paths: [2,1,0,7,14,15,16,9,8, 18,17,23,24,25,31,30, 32,33,34,40,47],
-                startDirection: 1,
+                paths: [19,26,25,18,17,16,23,30,31,38],
+                startDirection: 2,
             },
             {
                 id: 8,
@@ -203,12 +209,13 @@ let model = {
                 overlayTitle: "Hyper-Loop",
                 overlayFace: "img/eskil.png",
                 overlayStory:"Jeg finner ikke unMute knappen?! Kan du hjelpe meg?",
-                characterStartIndex: 0,
-                finishIndex: 48,
+                characterStartIndex: 38,
+                finishIndex: 10,
                 inventory: [],
+                objectives: {},
                 //test
-                paths: [2,1,0,7,14,15,16,9,8, 18,17,23,24,25,31,30, 32,33,34,40,47],
-                startDirection: 1,
+                paths: [38,31,32,33,26,19,18,17,10,],
+                startDirection: 0,
             },
             {
                 id: 9,
@@ -217,14 +224,19 @@ let model = {
                 overlayTitle: "Hyper-Loop",
                 overlayFace: "img/eskil.png",
                 overlayStory:"Jeg finner ikke unMute knappen?! Kan du hjelpe meg?",
-                characterStartIndex: 0,
-                finishIndex: 48,
+                characterStartIndex: 11,
+                finishIndex: 33,
                 inventory: [],
+                objectives: {},
                 //test
-                paths: [2,1,0,7,14,15,16,9,8, 18,17,23,24,25,31,30, 32,33,34,40,47],
-                startDirection: 1,
+                paths: [11,10,9,16,23,30,31,32,25,24,17,18,19,26,33],
+                startDirection: 3,
             },
         ],
+        gameEndOverlay: {
+            overlayTitle: "Gratulerer!",
+            overlayText: "Du kom i mål til slutt",
+        },
 
         directions: ['north','east','south', 'west'],
 
@@ -257,6 +269,12 @@ let model = {
         itemImages: [
             { yellowKeyIcon: "img/yellowkey.png" },
             { yellowDoor: "img/yellowdoor.png" },
+        ],
+        failQuotes:[
+            "Ikke gå på gresset!",
+            "Gresset er fullt av slanger og flått!",
+            "Det ser ikke helt riktig ut..",
+            "Å feile er å lære",
         ],
         
         victoryQuotes: [

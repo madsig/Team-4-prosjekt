@@ -4,6 +4,7 @@ function moveCommandToProgram(id) {
     model.game.runtime.program.commands.push({
         commandId: id,
         isSuccess: null,
+        hasRun: false,
         inProgram: true,
 
     });
@@ -19,6 +20,7 @@ function removeCommandFromProgram(index) {
         command.isSuccess = false;
     }
     resetPlayerPosition()
+    resetItems();
     resetProgramButtonStates();
     updateView();
 }
@@ -35,6 +37,7 @@ function resetPlayerPosition() {
     model.game.runtime.player.direction = model.game.runtime.board.startDirection;
     model.game.runtime.player.marginLeft = 0;
     model.game.runtime.player.marginTop = 0;
+    model.game.runtime.isPlayerOffTrack = false;
     setAnimationDirection()
 }
 
@@ -44,10 +47,21 @@ function runProgram() {
     stepThroughList();
 }
 
+
 function resetProgramButtonStates() {
     for (let command of model.game.runtime.program.commands) {
         command.isSuccess = false;
+        command.hasRun = false;
     }
+}
+
+function failRemainingCommands(index){
+    for(let i = index-1; i<model.game.runtime.program.commands.length;i++){
+        model.game.runtime.program.commands[i].hasRun = true;
+        model.game.runtime.program.commands[i].isSuccess = false;
+    }
+
+
 }
 
 function stepThroughList() {
@@ -62,7 +76,8 @@ function stepThroughList() {
     
 
     let interval = setInterval(() => {
-        if (model.game.runtime.program.commands.length <= stepCounter) {
+
+        if (model.game.runtime.program.commands.length <= stepCounter || model.game.runtime.isPlayerOffTrack) {
             clearInterval(interval) //Stop running the interval
             staggerFrames = 14; //Default speed for idle animations
             playerState = 'idle'; //Resets the state to the default idle animation after all commands are run.
@@ -117,6 +132,7 @@ function stepThroughList() {
 
         }else {
             console.log("%cRunning outer interval", 'color: red; font-size: 12px;')
+            model.game.runtime.program.commands[stepCounter].hasRun = true;
             model.game.runtime.program.commands[stepCounter].isSuccess = true;
             if(currentCommand.commandId == 0)
                 moveForward(stepCounter)
@@ -126,6 +142,7 @@ function stepThroughList() {
             model.game.runtime.player.marginTop = 0;
             model.game.runtime.player.marginLeft = 0;
             stepCounter++;
+            if(model.game.runtime.isPlayerOffTrack){failRemainingCommands(stepCounter);}
             marginCounter = 0;
         }
         updateView()
@@ -166,7 +183,6 @@ function useItem() {
 }
 function resetItems() {
     const currentBoard = model.game.levels[model.game.runtime.currentLevel].boardId;
-    console.log(currentBoard)
     model.game.runtime.board.inventory = JSON.parse(JSON.stringify(model.game.boards[currentBoard].inventory));
     model.game.runtime.player.inventory = null;
 }
@@ -183,6 +199,11 @@ function moveForward() {
     } else if (characterDir == 3) {
         model.game.runtime.player.index -= 1;
     }
+
+    if(!model.game.runtime.board.paths.includes(model.game.runtime.player.index)){
+        model.game.runtime.isPlayerOffTrack = true;
+    }
+    
 }
 
 function turnRight() {
@@ -201,13 +222,17 @@ function turnLeft() {
 function changeLevel(level) {
     // if (confirm("Forlat levelet?")) {
         let levelId = level - 1; //level 1 = index 0
-        model.game.runtime.currentLevel = levelId;
-    
         model.app.showOverlay = true;
-        model.game.runtime.currentLevelStatus = null;
-        setAnimationDirection()
-        resetProgramList()
-        initializeLevel();
+        if(levelId < 10){
+            model.game.runtime.currentLevel = levelId;
+            model.game.runtime.currentLevelStatus = null;
+            setAnimationDirection()
+            resetProgramList()
+            initializeLevel();
+        }else{
+            model.game.hasGameEnded = true;
+        }
+
         updateView();
     // }
 }
@@ -222,12 +247,19 @@ function RNG(max) {
     return number
 }
 
+
 function checkWinLoss() {
     if (!model.game.runtime.board.paths.includes(model.game.runtime.player.index)) {
         //loose()
+        
         console.log("loose")
     }
     if (model.game.runtime.player.index === model.game.runtime.board.finishIndex) {
+        if (model.game.runtime.board.inventory.length > 0 && !model.game.runtime.board.inventory[0].pickedUp) {
+             //loose()
+            console.log("loose")
+            return
+        }
         //win()
         playerState = 'victoryPose';
         console.log("win")

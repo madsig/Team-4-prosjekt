@@ -55,7 +55,7 @@ button:disabled{
     width: 65vw;
     height: 75vh;
     position: absolute;
-    z-index: 3;
+    z-index: 6;
     background-color: rgba(187, 186, 186, 0.908);
     
 }

@@ -16,11 +16,10 @@ function showVictoryOverlay(){
     return model.game.runtime.currentLevelStatus ? `<div class="victoryImage"><img src="img/victory.png"></div>`:"";
 }
 function generateTopImageAndText(){
-    // <h1>${model.game.boards[model.game.runtime.currentLevel].boardTask}</h1>
  let topHTML = `
     <div class="topImageAndText">
     <img src="${model.game.runtime.board.boardFace}">
-    <h1>${model.game.runtime.board.boardTask}</h1>
+    <h1>${!model.game.runtime.isPlayerOffTrack ? model.game.runtime.board.boardTask : model.game.failQuotes[RNG(model.game.failQuotes.length)]}</h1>
     </div>`
     return topHTML;
 }
@@ -40,17 +39,24 @@ function generateGameWindow() {
     const playerIndex = model.game.runtime.player.index;
     let gameWindowHtml = '';
     let backgroundImage;
+    let objective;
+
+    if(board.objectives.length != 0){
+        objective = board.objectives.indexOnBoard;
+    }
+
     //console.log('%c------------------------', 'color: red; font-size: 28px;');
     //console.log("pathArray: "+pathArray);
     for (let i = 0; i < 7 ** 2; i++) {
         backgroundImage = board.backgroundImagesCache.length === 49 ? board.backgroundImagesCache[i] : getBackgroundImage(i);
         let flag = board.finishIndex === i ? game.flagImage : '';
+        let obj = objective === i ? board.objectives.iconUrl: '';
         //let player = game.boards[currentBoard].characterStartIndex === i ? game.playerImage : '';
         let player = playerIndex === i ? `<canvas style="top: ${model.game.runtime.player.marginTop + 35}%; left: ${model.game.runtime.player.marginLeft + 50}%" id="canvasRookie"></canvas>` : '';
         gameWindowHtml += /*HTML*/ `
             <div class="gridBlock" style="background-image: url(${backgroundImage})">
                 <div class="gridNumber">${model.app.isTesting ? i:""}</div>
-                <div class="gridImage"><img src="${flag} ${getItems(i)}" width="64"> ${player}</div>
+                <div class="gridImage"><img src="${flag} ${obj} ${getItems(i)}" width="64"> ${player}</div>
             </div>
         `;
     }
@@ -115,9 +121,9 @@ function generateProgramWindow() {
         btnText = model.game.commands[programList[i].commandId]
         programHTML += `
         <button id="${i}" 
-        class="${programList[i].isSuccess ? "codeButtonSuccess" : "codeButtonProgram"}"
+        class="${!programList[i].hasRun ? "codeButtonProgram" : programList[i].isSuccess ? "codeButtonSuccess" : "codeButtonFailed"}"
         onclick="removeCommandFromProgram(${i})"
-        >${programList[i].isSuccess ? btnText.jsName : btnText.name}</button>`
+        >${programList[i].hasRun ? btnText.jsName : btnText.name}</button>`
     }
 
     if(model.game.runtime.currentLevelStatus){
@@ -172,21 +178,29 @@ function generateLevelsWindow() {
 
 
 function generateOverlayWindow(){
-   let overlayHTML = /*HTML*/
-   `
-   <div class="overlayWindow">
-    <h2 class="overlayHeader">${model.game.runtime.board.overlayTitle}</h2>
-    <img src="img/rookieHIGH14.png" width="128px">
-    <div class="storyText">
-    <img src="${model.game.runtime.board.overlayFace}" width="96px" height="96px">
-    <p>
-     ${model.game.runtime.board.overlayStory}
-    </p>
-    </div>
-    <button onclick="toggleOverlay()" class="startButton">Start!</button>
-    
-   </div>
-    `;
+   let overlayHTML = 
+        /*HTML*/
+        `
+        <div class="overlayWindow">
+         <h2 class="overlayHeader">${model.game.hasGameEnded ? model.game.gameEndOverlay.overlayTitle : model.game.runtime.board.overlayTitle}</h2>
+         <div class="overlayImages">
+         ${model.game.hasGameEnded ? `<img src="img/computer.png" width=96px>`:""}
+         ${model.game.hasGameEnded ? `<img src="img/terjeMedHatt.gif" width=96px>`:""}
+         <img src="img/rookieHIGH14.png" width="128px">
+         ${model.game.hasGameEnded ? `<img src="img/eskil.gif" width=96px>`:""}
+         ${model.game.hasGameEnded ? `<img src="img/microphonemuted.png" width=96px>`:""}
+         </div>
+         <div class="storyText">
+         ${model.game.hasGameEnded ? "" : `<img src="${model.game.runtime.board.overlayFace}" width="96px" height="96px">`}
+         <p>
+          ${model.game.hasGameEnded ? model.game.gameEndOverlay.overlayText : model.game.runtime.board.overlayStory}
+         </p>
+         </div>
+         ${model.game.hasGameEnded ? "" : `<button onclick="toggleOverlay()" class="startButton">Start!</button>`}
+
+        </div>
+         `;
+        
    return overlayHTML;
 }
 
