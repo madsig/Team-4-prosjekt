@@ -246,22 +246,21 @@ function RNG(max) {
 
 
 function checkWinLoss() {
-    if (!model.game.runtime.board.paths.includes(model.game.runtime.player.index)) {
-        console.log("loose")
-    }
     if (model.game.runtime.player.index === model.game.runtime.board.finishIndex) {
         if (model.game.runtime.board.inventory.length > 0 && !model.game.runtime.board.inventory[0].pickedUp) {
              //loose()
             console.log("loose")
-            return
-        }
+            model.game.runtime.board.boardTask = "Du glemte "+model.game.runtime.board.inventory[0].name+"!";
+            
+        }else{
         //win()
         playerState = 'victoryPose';
         console.log("win")
         model.game.runtime.currentLevelStatus = true;
         model.game.runtime.board.boardTask = model.game.victoryQuotes[RNG(model.game.victoryQuotes.length)];
-        updateView()
+        }
     }
+    updateView()
 }
 function setAnimationDirection() {
     level = model.game.runtime.currentLevel

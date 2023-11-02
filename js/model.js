@@ -3,7 +3,7 @@ let model = {
         //kasnkje i css fil
         theme: 'light',
         gameTitle: "Rookie and the GET wizard",
-        isTesting: true,
+        isTesting: false,
         showOverlay: true,
 
         //Trenger man dette i modellen?
@@ -58,11 +58,11 @@ let model = {
         levels: [
             { id: 0, boardId: 0, availableCommands: [0,] },
             { id: 1, boardId: 1, availableCommands: [0, 1, 2] },
-            { id: 2, boardId: 2, availableCommands: [0, 1, 2, 3, 4] },
-            { id: 3, boardId: 3, availableCommands: [0, 1, 2, 3, 4] },
-            { id: 4, boardId: 4, availableCommands: [0, 1, 2, 3, 4] },
-            { id: 5, boardId: 5, availableCommands: [0, 1, 2, 3, 4] },
-            { id: 6, boardId: 6, availableCommands: [0, 1, 2, 3, 4] },
+            { id: 2, boardId: 2, availableCommands: [0, 1, 2, 3] },
+            { id: 3, boardId: 3, availableCommands: [0, 1, 2, 3] },
+            { id: 4, boardId: 4, availableCommands: [0, 1, 2, 3] },
+            { id: 5, boardId: 5, availableCommands: [0, 1, 2, 3] },
+            { id: 6, boardId: 6, availableCommands: [0, 1, 2, 3] },
             { id: 7, boardId: 7, availableCommands: [0, 1, 2, 3, 4] },
             { id: 8, boardId: 8, availableCommands: [0, 1, 2, 3, 4] },
             { id: 9, boardId: 9, availableCommands: [0, 1, 2, 3, 4] },
@@ -77,9 +77,9 @@ let model = {
                 boardTask:"Ta de første stegene mot mål..",
                 overlayTitle: "Velkommen til GET Academy!",
                 overlayFace: "img/terjeMedHatt.gif",
-                overlayStory:`Hei, Rookie! Etter 20 uker i programmet vårt vil du kunne lage dette spillet og MYE mer!<br>
-                    Kun fantasien setter grenser, men uten mål og mening vil du nok ikke finne frem... <br><br>
-                    Ta dine første steg på stien idag, men pass på! Gresset er fullt av slanger og flått!`,
+                overlayStory:`Hei, Rookie! Etter 20 uker i programmet vårt vil du kunne lage spill som dette og MYE mer!<br>
+                    Kun fantasien setter grenser, men uten mål og mening vil du nok ikke finne frem i jungelen av variabler, funksjoner og klasser... <br><br>
+                    Ta dine første steg på stien idag, men pass på! Gresset er fullt av slanger, flått og uendelige løkker!`,
                 characterStartIndex: 23,
                 finishIndex: 25,
                 inventory: [],
@@ -89,11 +89,11 @@ let model = {
             },
             {
                 id: 1,
-                boardTask:"Ut mot høyre",
+                boardTask:"Naviger deg gjennom svingen",
                 boardFace: "img/terjeMedHatt.png",
-                overlayTitle: "Det SVINGER seg..",
+                overlayTitle: "Ut mot høyre..eller..venstre?",
                 overlayFace: "img/terjeMedHatt.gif",
-                overlayStory:"Med litt input fra kodelærere vil reisen bli enda lettere.",
+                overlayStory:"Med litt input fra kodelærere vil reisen bli enda lettere. Med litt kunnskap om Funksjoner vil du kunne gjøre enda mer.",
                 characterStartIndex: 16,
                 finishIndex: 32,
                 inventory: [],
@@ -104,32 +104,32 @@ let model = {
             },
             {
                 id: 2,
-                boardTask:"En runde med Loops",
+                boardTask:"While(Loops), pick up.",
                 boardFace: "img/terjeMedHatt.png",
                 overlayTitle: "Would you kindly..",
                 overlayFace: "img/terjeMedHatt.gif",
-                overlayStory:"Jeg har det litt travelt, må dra til GetAcademy, møt meg der! Plukk opp loopen der er du snill.",
+                overlayStory:"Jeg har det litt travelt da jeg må dra til GET Academy, møt meg der!<br><br> Så lenge det ligger Loops på brettet, kan du plukke de opp?",
                 characterStartIndex: 37,
                 finishIndex: 18,
                 inventory: [
-                    { id: 0, name: 'loop', indexOnBoard: 24, iconUrl: 'img/loopShiny.gif', pickedUp: false, },
+                    { id: 0, name: 'en Loop', indexOnBoard: 24, iconUrl: 'img/loopShiny.gif', pickedUp: false, },
                 ],
-                objectives:{id:0, name: 'terminal', indexOnBoard: 17, iconUrl: 'img/terminal.gif', isOpened: false},
+                objectives: {},
                 
                 paths: [37, 38, 31, 24, 17, 18],//[39,40,33,26,19,18,11,10,9,16,15,22,29,36,37],
                 startDirection: 1,
             },
             {
                 id: 3,
-                boardTask:"???",
+                boardTask:"Kan du ta med Eskil?",
                 boardFace: "img/terjeMedHatt.png",
-                overlayTitle: "Hyper-Loop",
+                overlayTitle: "GET Eskil",
                 overlayFace: "img/terjeMedHatt.gif",
-                overlayStory:"En infinite loop!! Da går det galt. Jeg må avgårde! Kan du finne Eskil? Morgenmøte starter om 2 minutter!",
+                overlayStory:"Det var en infinite loop! De kommer overaskende på, og du ser de ikke før koden din krasjer..<br> Men blir du her lenge nok lærer du å takle dette også!<br><br> Kan du finne Eskil? Chorei'en starter om 2 minutter!",
                 characterStartIndex: 8,
                 finishIndex: 26,
                 inventory: [
-                    { id: 0, name: 'eskil', indexOnBoard: 30, iconUrl: 'img/eskilShiny.gif', pickedUp: false, }
+                    { id: 0, name: 'Eskil', indexOnBoard: 30, iconUrl: 'img/eskilShiny.gif', pickedUp: false, }
                 ],
                 objectives: {},
                 //test
@@ -138,15 +138,15 @@ let model = {
             },
             {
                 id: 4,
-                boardTask:"???",
+                boardTask:"Er jeg muta?",
                 boardFace: "img/eskil.png",
-                overlayTitle: "Hyper-Loop",
+                overlayTitle: "The sound of silence",
                 overlayFace: "img/eskil.gif",
-                overlayStory:"Jeg finner ikke unMute knappen?! Kan du hjelpe meg?",
+                overlayStory:"Jeg skal ha en forelesning om Pomodoro men jeg finner ikke Un-mute knappen?! Kan du hjelpe meg?",
                 characterStartIndex: 32,
                 finishIndex: 30,
                 inventory: [
-                    { id: 0, name: 'unMute', indexOnBoard: 16, iconUrl: 'img/microShiny.gif', pickedUp: false, }
+                    { id: 0, name: 'Un-mute knappen', indexOnBoard: 16, iconUrl: 'img/microShiny.gif', pickedUp: false, }
                 ],
                 objectives: {},
                 //test
@@ -155,15 +155,15 @@ let model = {
             },
             {
                 id: 5,
-                boardTask:"???",
+                boardTask:"Ta med PC'n",
                 boardFace: "img/eskil.png",
-                overlayTitle: "Hyper-Loop",
+                overlayTitle: "Datainnsamling i praksis",
                 overlayFace: "img/eskil.gif",
                 overlayStory:"Har du det du trenger til skolen? En datamaskin med litt kraft kan være greit å ha!",
                 characterStartIndex: 30,
                 finishIndex: 20,
                 inventory: [
-                    { id: 0, name: 'maskin', indexOnBoard: 31, iconUrl: 'img/computerShiny.gif', pickedUp: false, }
+                    { id: 0, name: 'Datamaskin', indexOnBoard: 31, iconUrl: 'img/computerShiny.gif', pickedUp: false, }
                 ],
                 objectives: {},
                 //test
@@ -172,15 +172,15 @@ let model = {
             },
             {
                 id: 6,
-                boardTask:"???",
+                boardTask:"Ta med mikrofonen",
                 boardFace: "img/eskil.png",
-                overlayTitle: "Hyper-Loop",
+                overlayTitle: "Yttringsfrihet under ansvar",
                 overlayFace: "img/eskil.gif",
-                overlayStory:"En mikrofon trenger du også! Kommunikasjon er key hos oss!",
+                overlayStory:"En mikrofon trenger du også, da kommunikasjon er key hos oss!<br><br> Nøkkelkompetansene vi lærer deg er superviktig for å lykkes som utvikler idag, like viktig som kodeferdigheter!",
                 characterStartIndex: 20,
                 finishIndex: 9,
                 inventory: [
-                    { id: 0, name: 'mikrofon', indexOnBoard: 10, iconUrl: 'img/microShiny2.gif', pickedUp: false, }
+                    { id: 0, name: 'Mikrofon', indexOnBoard: 10, iconUrl: 'img/microShiny2.gif', pickedUp: false, }
                 ],
                 objectives: {},
                 //test
@@ -190,14 +190,14 @@ let model = {
             {
                 id: 7,
                 boardTask:"???",
-                boardFace: "img/eskil.png",
-                overlayTitle: "Hyper-Loop",
-                overlayFace: "img/eskil.gif",
-                overlayStory:"Jeg finner ikke unMute knappen?! Kan du hjelpe meg?",
+                boardFace: "img/terjeMedHatt.png",
+                overlayTitle: "???",
+                overlayFace: "img/terjeMedHatt.gif",
+                overlayStory:"Med repetisjon og  utvikler du både tålmodighet og kunnskap! Dette vil du få bruk for overalt",
                 characterStartIndex: 19,
                 finishIndex: 38,
                 inventory: [],
-                objectives: {},
+                objectives: {id:0, name: 'terminal', indexOnBoard: 17, iconUrl: 'img/terminal.gif', isOpened: false},
                 //test
                 paths: [19,26,25,18,17,16,23,30,31,38],
                 startDirection: 2,
@@ -206,12 +206,14 @@ let model = {
                 id: 8,
                 boardTask:"???",
                 boardFace: "img/eskil.png",
-                overlayTitle: "Hyper-Loop",
-                overlayFace: "img/eskil.png",
-                overlayStory:"Jeg finner ikke unMute knappen?! Kan du hjelpe meg?",
+                overlayTitle: "???",
+                overlayFace: "img/eskil.gif",
+                overlayStory:"Du kommer til å bygge nye og gode vaner, gjennom nøkkelkompetanse faget.",
                 characterStartIndex: 38,
                 finishIndex: 10,
-                inventory: [],
+                inventory: [
+                    { id: 0, name: 'nøkkelkompetanse', indexOnBoard: 32, iconUrl: 'img/shinyNK.gif', pickedUp: false, }
+                ],
                 objectives: {},
                 //test
                 paths: [38,31,32,33,26,19,18,17,10,],
@@ -221,15 +223,18 @@ let model = {
                 id: 9,
                 boardTask:"???",
                 boardFace: "img/eskil.png",
-                overlayTitle: "Hyper-Loop",
-                overlayFace: "img/eskil.png",
-                overlayStory:"Jeg finner ikke unMute knappen?! Kan du hjelpe meg?",
+                overlayTitle: "???",
+                overlayFace: "img/terjeMedHatt.gif",
+                overlayStory:"Gjør deg klar for 20 uker med feiling! Du kommer til å lære masse!",
                 characterStartIndex: 11,
-                finishIndex: 33,
-                inventory: [],
+                finishIndex: 19,
+                inventory: [
+                    { id: 0, name: 'feiling', indexOnBoard: 10, iconUrl: 'img/feilingShiny.gif', pickedUp: false, }
+                ],
+                
                 objectives: {},
                 //test
-                paths: [11,10,9,16,23,30,31,32,25,24,17,18,19,26,33],
+                paths: [11,10,9,16,23,30,31,32,25,18,19],
                 startDirection: 3,
             },
         ],
@@ -275,6 +280,7 @@ let model = {
             "Gresset er fullt av slanger og flått!",
             "Det ser ikke helt riktig ut..",
             "Å feile er å lære",
+            "nja..ikke helt riktig"
         ],
         
         victoryQuotes: [
@@ -283,7 +289,7 @@ let model = {
             "Vel gjennomført!",
             "Du fikk det til!",
             "Fantastisk, du kom i mål!",
-            "Bra jobba, du fullførte det!",
+            "Bra jobba, du fullførte!",
             "Mål oppnådd, gratulerer!",
             "Du er i mål, godt jobbet!",
             "Mission accomplished!",
@@ -292,12 +298,6 @@ let model = {
             "Skikkelig bra, du er i mål!",
             "Du har nådd målet, bra jobbet!",
             "Fantastisk!",
-            "Nice! Du nådde endelig målet!",
-            "Gjennomført det med stil",
-            "Du er i mål, og det er strålende!",
-            "Du gjorde det! Målet er oppnådd!",
-            "Du er en vinner! Målet er nådd!",
-            "Gratulerer, du har nådd toppen!",
         ]
     },
 

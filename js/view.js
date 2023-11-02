@@ -56,7 +56,7 @@ function generateGameWindow() {
         gameWindowHtml += /*HTML*/ `
             <div class="gridBlock" style="background-image: url(${backgroundImage})">
                 <div class="gridNumber">${model.app.isTesting ? i:""}</div>
-                <div class="gridImage"><img src="${flag} ${obj} ${getItems(i)}" width="64"> ${player}</div>
+                <div class="gridImage"><img src="${flag} ${obj} ${getItems(i)}" width="64" style="margin-top:-8%"> ${player}</div>
             </div>
         `;
     }
