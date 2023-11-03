@@ -51,6 +51,7 @@ function generateGameWindow() {
         backgroundImage = board.backgroundImagesCache.length === 49 ? board.backgroundImagesCache[i] : getBackgroundImage(i);
         let flag = board.finishIndex === i ? game.flagImage : '';
         let obj = objective === i ? board.objectives.iconUrl: '';
+
         //let player = game.boards[currentBoard].characterStartIndex === i ? game.playerImage : '';
         let player = playerIndex === i ? `<canvas style="top: ${model.game.runtime.player.marginTop + 35}%; left: ${model.game.runtime.player.marginLeft + 50}%" id="canvasRookie"></canvas>` : '';
         gameWindowHtml += /*HTML*/ `

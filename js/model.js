@@ -189,14 +189,15 @@ let model = {
             },
             {
                 id: 7,
-                boardTask:"???",
+                boardTask:"Bruk det du kan",
                 boardFace: "img/terjeMedHatt.png",
-                overlayTitle: "???",
+                overlayTitle: "Snart i mål..",
                 overlayFace: "img/terjeMedHatt.gif",
-                overlayStory:"Med repetisjon og  utvikler du både tålmodighet og kunnskap! Dette vil du få bruk for overalt",
+                overlayStory:"Med reflektiv repetisjon utvikler du både tålmodighet og kunnskap! Dette kan du bruke for å nå dit du vil.",
                 characterStartIndex: 19,
                 finishIndex: 38,
                 inventory: [],
+                //Bruk låser opp Mål
                 objectives: {id:0, name: 'terminal', indexOnBoard: 17, iconUrl: 'img/terminal.gif', isOpened: false},
                 //test
                 paths: [19,26,25,18,17,16,23,30,31,38],
@@ -204,31 +205,33 @@ let model = {
             },
             {
                 id: 8,
-                boardTask:"???",
+                boardTask:"Ta med nøkkelen",
                 boardFace: "img/eskil.png",
-                overlayTitle: "???",
+                overlayTitle: "Nøkkelen til selvutvikling",
                 overlayFace: "img/eskil.gif",
-                overlayStory:"Du kommer til å bygge nye og gode vaner, gjennom nøkkelkompetanse faget.",
+                overlayStory:"Du kommer til å bygge nye og gode vaner, gjennom nøkkelkompetanse faget. Dette er viktig å få med seg på GET Academy!",
                 characterStartIndex: 38,
                 finishIndex: 10,
                 inventory: [
-                    { id: 0, name: 'nøkkelkompetanse', indexOnBoard: 32, iconUrl: 'img/shinyNK.gif', pickedUp: false, }
+                    { id: 0, name: 'Nøkkelkompetanse', indexOnBoard: 32, iconUrl: 'img/shinyNK.gif', pickedUp: false, }
                 ],
-                objectives: {},
+                //Her må Flag være låst bygg.
+                objectives: {id:0, name: 'Lock', indexOnBoard: 10, iconUrl: 'img/buildingwithlockandchain.png', isOpened: false},
                 //test
                 paths: [38,31,32,33,26,19,18,17,10,],
                 startDirection: 0,
             },
             {
                 id: 9,
-                boardTask:"???",
+                boardTask:"Du har allerede alt du trenger!",
                 boardFace: "img/eskil.png",
-                overlayTitle: "???",
+                overlayTitle: "Har du motivasjon og læringsvilje, sørger vi for resten!",
                 overlayFace: "img/terjeMedHatt.gif",
-                overlayStory:"Gjør deg klar for 20 uker med feiling! Du kommer til å lære masse!",
+                overlayStory:"Gjør deg klar for 20 uker med prøving og feiling! Du kommer til å lære masse!",
                 characterStartIndex: 11,
                 finishIndex: 19,
                 inventory: [
+                    //Man kan ikke unngå feil, når man toucher feilene samles de opp i Inventory, eller sleper etter?
                     { id: 0, name: 'feiling', indexOnBoard: 10, iconUrl: 'img/feilingShiny.gif', pickedUp: false, }
                 ],
                 
