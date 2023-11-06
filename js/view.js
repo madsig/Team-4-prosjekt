@@ -51,13 +51,21 @@ function generateGameWindow() {
         backgroundImage = board.backgroundImagesCache.length === 49 ? board.backgroundImagesCache[i] : getBackgroundImage(i);
         let flag = board.finishIndex === i ? game.flagImage : '';
         let obj = objective === i ? board.objectives.iconUrl: '';
+        
+        //If the building is locked (objectives) and it exists on the finishIndex, dont draw the flag. If the building is Opened, dont draw it.
+        if(board.finishIndex == board.objectives.indexOnBoard && !board.objectives.isOpened){
+            obj = objective === i ? board.objectives.iconUrl: '';
+            flag = '';
+        }else{
+            obj = '';
+        }
 
         //let player = game.boards[currentBoard].characterStartIndex === i ? game.playerImage : '';
         let player = playerIndex === i ? `<canvas style="top: ${model.game.runtime.player.marginTop + 35}%; left: ${model.game.runtime.player.marginLeft + 50}%" id="canvasRookie"></canvas>` : '';
         gameWindowHtml += /*HTML*/ `
             <div class="gridBlock" style="background-image: url(${backgroundImage})">
                 <div class="gridNumber">${model.app.isTesting ? i:""}</div>
-                <div class="gridImage"><img src="${flag} ${obj} ${getItems(i)}" width="64" style="margin-top:-8%"> ${player}</div>
+                <div class="gridImage"><img src="${flag} ${obj}${getItems(i)}" width="64" style="margin-top:-8%"> ${player}</div>
             </div>
         `;
     }
@@ -148,7 +156,7 @@ function generateCommandsWindow() {
     
     for (let i = 0; i < commandList.length; i++) {
         commandsHTML += /*HTML*/`
-            <button id="${commandList[i]}" class="codeButtonDefault" onclick="moveCommandToProgram(${commandList[i]})">${model.game.commands[i].name}</button>      
+            <button id="${commandList[i]}" class="codeButtonDefault" onclick="moveCommandToProgram(${commandList[i]})">${model.game.commands[commandList[i]].name}</button>      
         `
     }
     commandsHTML += `</div></div>`

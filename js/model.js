@@ -3,7 +3,7 @@ let model = {
         //kasnkje i css fil
         theme: 'light',
         gameTitle: "Rookie and the GET wizard",
-        isTesting: false,
+        isTesting: true,
         showOverlay: true,
 
         //Trenger man dette i modellen?
@@ -58,14 +58,14 @@ let model = {
         levels: [
             { id: 0, boardId: 0, availableCommands: [0,] },
             { id: 1, boardId: 1, availableCommands: [0, 1, 2] },
-            { id: 2, boardId: 2, availableCommands: [0, 1, 2, 3] },
-            { id: 3, boardId: 3, availableCommands: [0, 1, 2, 3] },
-            { id: 4, boardId: 4, availableCommands: [0, 1, 2, 3] },
-            { id: 5, boardId: 5, availableCommands: [0, 1, 2, 3] },
-            { id: 6, boardId: 6, availableCommands: [0, 1, 2, 3] },
-            { id: 7, boardId: 7, availableCommands: [0, 1, 2, 3, 4] },
-            { id: 8, boardId: 8, availableCommands: [0, 1, 2, 3, 4] },
-            { id: 9, boardId: 9, availableCommands: [0, 1, 2, 3, 4] },
+            { id: 2, boardId: 2, availableCommands: [0, 1, 2, 3]},
+            { id: 3, boardId: 3, availableCommands: [0, 1, 2, 3]},
+            { id: 4, boardId: 4, availableCommands: [0, 1, 2, 3]},
+            { id: 5, boardId: 5, availableCommands: [0, 1, 2, 3]},
+            { id: 6, boardId: 6, availableCommands: [0, 1, 2, 3]},
+            { id: 7, boardId: 7, availableCommands: [0, 1, 2, 4]},
+            { id: 8, boardId: 8, availableCommands: [0, 1, 2, 3]},
+            { id: 9, boardId: 9, availableCommands: [0, 1, 2, 3, 4]},
             
         ],
 
@@ -142,7 +142,7 @@ let model = {
                 boardFace: "img/eskil.png",
                 overlayTitle: "The sound of silence",
                 overlayFace: "img/eskil.gif",
-                overlayStory:"Jeg skal ha en forelesning om Pomodoro men jeg finner ikke Un-mute knappen?! Kan du hjelpe meg?",
+                overlayStory:"Jeg skal ha en forelesning i Nøkkelkompetanser men jeg finner ikke Un-mute knappen?! Kan du hjelpe meg?",
                 characterStartIndex: 32,
                 finishIndex: 30,
                 inventory: [
@@ -155,19 +155,19 @@ let model = {
             },
             {
                 id: 5,
-                boardTask:"Ta med PC'n",
+                boardTask:"Ta med PC'n, det er forelesning kl 9!",
                 boardFace: "img/eskil.png",
                 overlayTitle: "Datainnsamling i praksis",
                 overlayFace: "img/eskil.gif",
                 overlayStory:"Har du det du trenger til skolen? En datamaskin med litt kraft kan være greit å ha!",
                 characterStartIndex: 30,
-                finishIndex: 20,
+                finishIndex: 18,
                 inventory: [
-                    { id: 0, name: 'Datamaskin', indexOnBoard: 31, iconUrl: 'img/computerShiny.gif', pickedUp: false, }
+                    { id: 0, name: 'Datamaskin', indexOnBoard: 22, iconUrl: 'img/computerShiny.gif', pickedUp: false, }
                 ],
                 objectives: {},
                 //test
-                paths: [30, 31, 32, 25, 18, 19, 20], // 30, 31, 32, 25, 18, 19, 20
+                paths: [22,29,30, 31, 32, 25, 18, 19, 20,13,6], // 30, 31, 32, 25, 18, 19, 20
                 startDirection: 1,
             },
             {
@@ -196,24 +196,27 @@ let model = {
                 overlayStory:"Med reflektiv repetisjon utvikler du både tålmodighet og kunnskap! Dette kan du bruke for å nå dit du vil.",
                 characterStartIndex: 19,
                 finishIndex: 38,
-                inventory: [],
+                inventory: [
+                    // isUsable is only a property if you use the item, instead of picking it up.
+                    {id:0, name: 'terminal', indexOnBoard: 17, iconUrl: 'img/terminal.gif', pickedUp: false, isUsable: true}],
                 //Bruk låser opp Mål
-                objectives: {id:0, name: 'terminal', indexOnBoard: 17, iconUrl: 'img/terminal.gif', isOpened: false},
+
+                objectives: {id:0, name: 'terminalen', indexOnBoard: 38, iconUrl: 'img/buildingwithlockandchain.png', isOpened: false},
                 //test
                 paths: [19,26,25,18,17,16,23,30,31,38],
                 startDirection: 2,
             },
             {
                 id: 8,
-                boardTask:"Ta med nøkkelen",
+                boardTask:"Husk Nøkkelen! ",
                 boardFace: "img/eskil.png",
                 overlayTitle: "Nøkkelen til selvutvikling",
                 overlayFace: "img/eskil.gif",
-                overlayStory:"Du kommer til å bygge nye og gode vaner, gjennom nøkkelkompetanse faget. Dette er viktig å få med seg på GET Academy!",
+                overlayStory:"Du kommer til å bygge nye og gode vaner, gjennom Nøkkelkompetanse faget. Dette er viktig å få med seg på GET Academy!",
                 characterStartIndex: 38,
                 finishIndex: 10,
                 inventory: [
-                    { id: 0, name: 'Nøkkelkompetanse', indexOnBoard: 32, iconUrl: 'img/shinyNK.gif', pickedUp: false, }
+                    { id: 0, name: 'Nøkkelen', indexOnBoard: 32, iconUrl: 'img/shinyNK.gif', pickedUp: false,}
                 ],
                 //Her må Flag være låst bygg.
                 objectives: {id:0, name: 'Lock', indexOnBoard: 10, iconUrl: 'img/buildingwithlockandchain.png', isOpened: false},
@@ -225,19 +228,23 @@ let model = {
                 id: 9,
                 boardTask:"Du har allerede alt du trenger!",
                 boardFace: "img/eskil.png",
-                overlayTitle: "Har du motivasjon og læringsvilje, sørger vi for resten!",
+                overlayTitle: "Har du motivasjon og læringsvilje, sørger vi for resten!<br><br> Ikke heng deg for mye opp i Feil",
                 overlayFace: "img/terjeMedHatt.gif",
                 overlayStory:"Gjør deg klar for 20 uker med prøving og feiling! Du kommer til å lære masse!",
                 characterStartIndex: 11,
-                finishIndex: 19,
+                finishIndex: 26,
                 inventory: [
                     //Man kan ikke unngå feil, når man toucher feilene samles de opp i Inventory, eller sleper etter?
-                    { id: 0, name: 'feiling', indexOnBoard: 10, iconUrl: 'img/feilingShiny.gif', pickedUp: false, }
+                    { id: 0, name: 'feiling', indexOnBoard: 10, iconUrl: 'img/feilingShiny.gif', pickedUp: false, },
+                    { id: 1, name: 'feiling', indexOnBoard: 16, iconUrl: 'img/feilingShiny.gif', pickedUp: false, },
+                    { id: 2, name: 'feiling', indexOnBoard: 23, iconUrl: 'img/feilingShiny.gif', pickedUp: false, },
+                    { id: 3, name: 'feiling', indexOnBoard: 31, iconUrl: 'img/feilingShiny.gif', pickedUp: false, },
+                    { id: 4, name: 'feiling', indexOnBoard: 25, iconUrl: 'img/feilingShiny.gif', pickedUp: false, },
                 ],
                 
                 objectives: {},
                 //test
-                paths: [11,10,9,16,23,30,31,32,25,18,19],
+                paths: [11,10,9,16,23,30,31,32,25,26],
                 startDirection: 3,
             },
         ],

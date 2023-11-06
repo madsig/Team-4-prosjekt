@@ -153,10 +153,10 @@ function pickUpItem(index) {
     playerState = 'pickUp';
     const boardInv = model.game.runtime.board.inventory;
     console.log(`player inventory: ${model.game.runtime.player.inventory}`)
-    if (model.game.runtime.player.inventory != null) {
-        console.log("inventory full");
-        return;
-    }
+    // if (model.game.runtime.player.inventory != null) {
+    //     console.log("inventory full");
+    //     return;
+    // }
     for (let i = 0; i < boardInv.length; i++) {
         if (boardInv[i].indexOnBoard === index && !boardInv[i].pickedUp) {
             console.log("item found")
@@ -170,13 +170,17 @@ function pickUpItem(index) {
     console.log("no item")
 }
 function useItem() {
+    if(model.game.runtime.board.inventory[0].isUsable && model.game.runtime.player.index == model.game.runtime.board.inventory[0].indexOnBoard){
+        model.game.runtime.board.objectives.isOpened = true;
+        model.game.runtime.board.inventory[0].pickedUp = true;
+    }
     if (model.game.runtime.player.inventory === null) {
         console.log("no item in inventory")
         return;
     }
     model.game.runtime.board.inventory[model.game.runtime.player.inventory].indexOnBoard = model.game.runtime.player.index;
-    model.game.runtime.board.inventory[model.game.runtime.player.inventory].pickedUp = false;
-    model.game.runtime.player.inventory = null;
+    //model.game.runtime.board.inventory[model.game.runtime.player.inventory].pickedUp = false;
+    //model.game.runtime.player.inventory = null;
     console.log("item used/dropped");
     updateView();
 }
@@ -247,7 +251,7 @@ function RNG(max) {
 
 function checkWinLoss() {
     if (model.game.runtime.player.index === model.game.runtime.board.finishIndex) {
-        if (model.game.runtime.board.inventory.length > 0 && !model.game.runtime.board.inventory[0].pickedUp) {
+        if (model.game.runtime.board.inventory.length > 0 && !model.game.runtime.board.inventory[0].pickedUp && model.game.runtime.currentLevel != 9) {
              //loose()
             console.log("loose")
             model.game.runtime.board.boardTask = "Du glemte "+model.game.runtime.board.inventory[0].name+"!";
